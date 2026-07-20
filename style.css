@@ -193,3 +193,18 @@ button {
     object-fit: contain !important;
     transform: scale(1.15) !important;
 }
+.card {
+    position: relative;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background: #ffd000;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ffd000;
+}
