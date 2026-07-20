@@ -213,83 +213,7 @@ button {
     color: inherit;
     display: block;
 }
-/* ===== Comic Reader ===== */
-
-.reader {
-    text-align: center;
-    padding: 50px 20px;
-}
-
-
-.reader h1 {
-    color: #ffd000;
-    font-size: 40px;
-}
-
-
-.reader h2 {
-    color: white;
-}
-
-
-.pages {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    margin-top: 40px;
-}
-
-
-.pages img {
-    width: 90%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 0 25px rgba(255,208,0,.25);
-}
-
-
-.reader-buttons {
-    margin-top: 40px;
-}
-
-
-.reader-buttons a {
-    text-decoration: none;
-}
-/* ===== Comic Details ===== */
-
-
-.comic-details {
-    padding: 60px 20px;
-}
-
-
-.comic-info {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    background: #111;
-    padding: 30px;
-    border-radius: 25px;
-    border: 1px solid rgba(255,208,0,.5);
-}
-
-
-
-.comic-cover {
-    width: 300px;
-}
-
-
-.comic-cover img {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(255,208,0,.3);
-}
-
+/
 
 
 .comic-text {
@@ -356,6 +280,21 @@ button {
 .comic-info{
     flex-direction: column;
     text-align:center;
+.comic-page {
+    max-width: 600px;
+    margin: 40px auto;
 }
 
+.comic-page .cover {
+    height: 350px !important;
+}
+
+.comic-page .cover img {
+    max-height: 95%;
+    width: auto;
+}
+
+.comic-page h1 {
+    color: #ffd000;
+    text-shadow: 0 0 10px rgba(255,208,0,.4);
 }
