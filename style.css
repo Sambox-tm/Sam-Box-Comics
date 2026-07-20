@@ -182,3 +182,14 @@ button {
     padding: 50px;
     background: #090909;
     }
+.cover {
+    height: 390px !important;
+    padding: 0 !important;
+}
+
+.cover img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: scale(1.15) !important;
+}
