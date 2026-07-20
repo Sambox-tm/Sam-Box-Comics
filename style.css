@@ -236,3 +236,19 @@ nav a {
     object-fit: cover;
     object-position: center;
 }
+.cover {
+    height: 280px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.cover img {
+    max-width: 85%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+}
