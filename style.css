@@ -203,7 +203,7 @@ button:hover {
 
 .comics .card .cover img {
     width: auto;
-    height: 220px;
-    max-width: 160px;
+    height: 250px;
+    max-width: 190px;
     object-fit: contain;
 }
