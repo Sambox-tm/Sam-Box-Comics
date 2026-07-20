@@ -5,116 +5,163 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0b0b0b;
+    background:
+        radial-gradient(circle at top, #292000, #050505 60%);
     color: white;
 }
 
+
+/* الهيدر */
+
 header {
     text-align: center;
-    padding: 35px 20px;
-    background: #111;
-    border-bottom: 3px solid #ffd000;
+    padding: 45px 20px;
+    background: rgba(0,0,0,0.7);
+    border-bottom: 2px solid #ffd000;
 }
+
 
 .logo {
-    font-size: 55px;
-    font-weight: bold;
+    font-size: 65px;
+    font-weight: 900;
     color: #ffd000;
-    letter-spacing: 2px;
+    text-shadow:
+        0 0 10px #ffd000,
+        0 0 25px #ffd000;
+    animation: glow 2s infinite alternate;
 }
+
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffd000;
+    }
+
+    to {
+        text-shadow: 0 0 30px #ffd000;
+    }
+}
+
 
 header p {
-    font-size: 18px;
+    color: #ddd;
+    font-size: 20px;
 }
 
-nav {
-    margin-top: 25px;
-}
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 10px;
-    font-size: 17px;
+    margin: 12px;
+    transition: .3s;
 }
+
 
 nav a:hover {
     color: #ffd000;
 }
 
 
+/* الواجهة الرئيسية */
+
 .hero {
     text-align: center;
-    padding: 70px 20px;
-    background: linear-gradient(#111, #0b0b0b);
+    padding: 90px 20px;
 }
+
 
 .hero h1 {
     color: #ffd000;
-    font-size: 42px;
+    font-size: 45px;
 }
+
 
 .hero p {
-    font-size: 20px;
+    font-size: 22px;
+    color: #ddd;
 }
+
 
 button {
-    margin-top: 25px;
+    margin-top: 30px;
+    padding: 16px 45px;
     background: #ffd000;
-    color: #000;
+    color: black;
     border: none;
-    padding: 15px 35px;
-    font-size: 18px;
+    border-radius: 30px;
+    font-size: 20px;
     font-weight: bold;
-    border-radius: 8px;
     cursor: pointer;
+    box-shadow: 0 0 20px #ffd000;
+    transition: .3s;
 }
 
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px #ffd000;
+}
+
+
+/* الكوميكس */
 
 .popular {
     text-align: center;
-    padding: 40px 20px;
+    padding: 50px 20px;
 }
+
 
 .popular h2,
 .team h2 {
     color: #ffd000;
-    font-size: 32px;
+    font-size: 35px;
 }
 
 
 .comics {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 
 .card {
-    background: #151515;
-    width: 220px;
+    background: #111;
+    width: 230px;
     padding: 20px;
-    border-radius: 12px;
-    border: 2px solid #ffd000;
+    border-radius: 15px;
+    border: 1px solid #ffd000;
+    transition: .4s;
+    box-shadow: 0 0 15px rgba(255,208,0,.2);
+}
+
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 35px #ffd000;
 }
 
 
 .cover {
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 280px;
     background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffd000;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
+.card h3 {
+    color: white;
 }
 
 
 .team {
     text-align: center;
-    padding: 40px;
-    background: #111;
-}
-body {
-    background: red !important;
+    padding: 50px;
+    background: #090909;
 }
