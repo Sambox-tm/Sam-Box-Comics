@@ -191,3 +191,19 @@ button:hover {
     height: 180px;
     object-fit: contain;
     }
+.comics .card .cover {
+    width: 230px;
+    height: 280px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.comics .card .cover img {
+    width: auto;
+    height: 220px;
+    max-width: 160px;
+    object-fit: contain;
+}
