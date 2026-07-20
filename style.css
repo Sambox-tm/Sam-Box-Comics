@@ -186,3 +186,8 @@ button:hover {
     padding: 50px;
     background: #090909;
     }
+.comic-image {
+    width: 120px;
+    height: 180px;
+    object-fit: contain;
+    }
