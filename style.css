@@ -1,1 +1,117 @@
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 35px 20px;
+    background: #111;
+    border-bottom: 3px solid #ffd000;
+}
+
+.logo {
+    font-size: 55px;
+    font-weight: bold;
+    color: #ffd000;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+nav {
+    margin-top: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 17px;
+}
+
+nav a:hover {
+    color: #ffd000;
+}
+
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(#111, #0b0b0b);
+}
+
+.hero h1 {
+    color: #ffd000;
+    font-size: 42px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+button {
+    margin-top: 25px;
+    background: #ffd000;
+    color: #000;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.popular {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.popular h2,
+.team h2 {
+    color: #ffd000;
+    font-size: 32px;
+}
+
+
+.comics {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    background: #151515;
+    width: 220px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #ffd000;
+}
+
+
+.cover {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    color: #ffd000;
+}
+
+
+.team {
+    text-align: center;
+    padding: 40px;
+    background: #111;
+}
