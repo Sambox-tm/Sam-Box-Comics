@@ -213,3 +213,47 @@ button {
     color: inherit;
     display: block;
 }
+/* ===== Comic Reader ===== */
+
+.reader {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+
+.reader h1 {
+    color: #ffd000;
+    font-size: 40px;
+}
+
+
+.reader h2 {
+    color: white;
+}
+
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+
+.pages img {
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255,208,0,.25);
+}
+
+
+.reader-buttons {
+    margin-top: 40px;
+}
+
+
+.reader-buttons a {
+    text-decoration: none;
+}
