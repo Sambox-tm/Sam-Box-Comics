@@ -165,3 +165,23 @@ button:hover {
     padding: 50px;
     background: #090909;
 }
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0;
+}
+
+.hero a {
+    text-decoration: none;
+}
+
+.hero button {
+    display: inline-block;
+}
