@@ -144,14 +144,18 @@ button:hover {
 
 
 .cover {
+    width: 100%;
     height: 280px;
     background: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffd000;
-    font-size: 20px;
+    overflow: hidden;
     border-radius: 10px;
+}
+
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 
