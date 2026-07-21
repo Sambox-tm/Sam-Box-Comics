@@ -199,3 +199,27 @@ body {
 .telegram-link img:hover {
     transform: scale(1.15);
 }
+.search-box{
+    text-align:center;
+    margin:25px 0 40px;
+}
+
+.search-box input{
+    width:90%;
+    max-width:420px;
+    padding:14px 20px;
+    border-radius:30px;
+    border:2px solid #ffd000;
+    background:#111;
+    color:white;
+    font-size:18px;
+    outline:none;
+}
+
+.search-box input::placeholder{
+    color:#999;
+}
+
+.search-box input:focus{
+    box-shadow:0 0 15px rgba(255,208,0,.5);
+}
