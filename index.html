@@ -11,26 +11,29 @@
 <body>
 
 <header>
-    <div class="logo">
-    <img src="images/sambox-logo.png" alt="SamBox Logo">
-    </div>
-    <p>وجهتك الأولى لقرائة الكوميكس المتنوعة </p>
-
+    <!-- زر القائمة في الطرف -->
     <div class="menu-btn">
-    ☰
-</div>
+        ☰
+    </div>
 
-<nav>
-    <a href="index.html">الرئيسية</a>
-    <a href="comics.html">جميع الكوميكس</a>
-    <a href="#">الفريق</a>
-    <a href="#">تواصل معنا</a>
-</nav>
+    <div class="logo">
+        <img src="images/sambox-logo.png" alt="SamBox Logo">
+    </div>
+    <p>وجهتك الأولى لقراءة الكوميكس المتنوعة</p>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="comics.html">جميع الكوميكس</a>
+        <a href="#">الفريق</a>
+        <a href="#">تواصل معنا</a>
+    </nav>
 </header>
 
-
 <section class="hero">
-    <h1>مرحباً بك في SamBox</h1>
+    <!-- لوجو الـ Hero بالصورة بدل النص -->
+    <div class="hero-logo">
+        <img src="images/sambox-logo.png" alt="SamBox">
+    </div>
     <p>اقرأ أفضل الكوميكس المترجمة من فريقنا</p>
 
     <a href="comics.html">
@@ -38,57 +41,53 @@
     </a>
 </section>
 
-
 <section class="popular">
+    <h2>🔥 الأكثر قراءة</h2>
 
-<h2>🔥 الأكثر قراءة</h2>
+    <div class="comics">
 
-<div class="comics">
+        <div class="card">
+            <div class="cover">غلاف الكوميكس</div>
+            <h3>كوميكس 1</h3>
+        </div>
 
-<div class="card">
-    <div class="cover">غلاف الكوميكس</div>
-    <h3>كوميكس 1</h3>
-</div>
+        <div class="card">
+            <div class="cover">غلاف الكوميكس</div>
+            <h3>كوميكس 2</h3>
+        </div>
 
-<div class="card">
-    <div class="cover">غلاف الكوميكس</div>
-    <h3>كوميكس 2</h3>
-</div>
+        <div class="card">
+            <div class="cover">غلاف الكوميكس</div>
+            <h3>كوميكس 3</h3>
+        </div>
 
-<div class="card">
-    <div class="cover">غلاف الكوميكس</div>
-    <h3>كوميكس 3</h3>
-</div>
+        <div class="card">
+            <div class="cover">غلاف الكوميكس</div>
+            <h3>كوميكس 4</h3>
+        </div>
 
-<div class="card">
-    <div class="cover">غلاف الكوميكس</div>
-    <h3>كوميكس 4</h3>
-</div>
+        <div class="card">
+            <div class="cover">غلاف الكوميكس</div>
+            <h3>كوميكس 5</h3>
+        </div>
 
-<div class="card">
-    <div class="cover">غلاف الكوميكس</div>
-    <h3>كوميكس 5</h3>
-</div>
-
-</div>
-
+    </div>
 </section>
-
 
 <section class="team">
-<h2>فريق SamBox</h2>
-<p>المترجمون - المراجعون - المصممون</p>
+    <h2>فريق SamBox</h2>
+    <p>المترجمون - المراجعون - المصممون</p>
 </section>
-<script>
 
+<script>
+// كود فتح وقفل القائمة في الجوال
 const menu = document.querySelector(".menu-btn");
 const nav = document.querySelector("nav");
 
 menu.onclick = () => {
     nav.classList.toggle("show");
 };
-
 </script>
 
 </body>
-</html>
+    </html>
