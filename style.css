@@ -181,3 +181,21 @@ body {
     background-size: cover;
     background-position: center;
 }
+.footer {
+    text-align: center;
+    padding: 30px 10px;
+    margin-top: 50px;
+    color: white;
+    font-size: 14px;
+}
+
+.telegram-link img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.telegram-link img:hover {
+    transform: scale(1.15);
+}
