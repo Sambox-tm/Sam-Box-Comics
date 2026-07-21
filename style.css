@@ -130,3 +130,38 @@ button:hover { transform:scale(1.08); box-shadow:0 0 40px #ffd000; }
     nav { display:none; flex-direction:column; background:#111; padding:20px; border-radius:15px; margin-top:15px; }
     nav.show { display:flex; }
           }
+/* ========================= */
+/* Header V2 */
+/* ========================= */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo img{
+    width:180px;
+    height:auto;
+}
+
+.menu-btn{
+    display:none;
+    font-size:32px;
+    color:#ffd000;
+    cursor:pointer;
+}
+
+/* الهاتف */
+
+@media (max-width:768px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    nav{
+        display:none;
+    }
+
+}
