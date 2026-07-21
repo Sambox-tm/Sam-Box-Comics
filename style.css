@@ -2,26 +2,29 @@
     box-sizing: border-box;
 }
 
-
 body {
     margin: 0;
     font-family: "Tahoma", Arial, sans-serif;
     background: radial-gradient(circle at top, #302400, #050505 75%);
     color: white;
+    padding-top: 200px; /* مهم: عشان المحتوى ما يختفي تحت الهيدر الثابت */
+    scroll-behavior: smooth; /* تحسين بسيط: سكرول ناعم */
 }
 
-
-
-/* ===== Header ===== */
-
+/* ===== Header ثابت ===== */
 header {
     text-align: center;
     padding: 20px;
-    background: rgba(0,0,0,.85);
+    background: rgba(0,0,0,.92); /* غمقته شوي عشان ما يشف */
     border-bottom: 3px solid #ffd000;
-};
-}
+    backdrop-filter: blur(6px); /* تحسين بسيط: تمويه خفيف */
 
+    position: fixed; /* يثبت */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* يطلع فوق الكل */
+}
 
 .logo {
     display: flex;
@@ -29,33 +32,31 @@ header {
     align-items: center;
 }
 
-..logo img {
+.logo img {
     width: 180px;
     max-width: 85%;
     height: auto;
     display: block;
     margin: 0 auto;
     filter: drop-shadow(0 0 12px rgba(255,208,0,.45));
+    transition: .3s; /* أضفت انتقال عشان الهوفر */
 }
 
 .logo img:hover {
-    transform: scale(1.03);
+    transform: scale(1.05); /* كبرته شوي زيادة */
+    filter: drop-shadow(0 0 20px rgba(255,208,0,.7)); /* توهج أقوى */
 }
-
 
 header p {
     color: #ddd;
     font-size: 20px;
+    margin-top: 10px;
 }
 
-
-
 /* ===== Navigation ===== */
-
 nav {
     margin-top: 25px;
 }
-
 
 nav a {
     color: white;
@@ -63,367 +64,214 @@ nav a {
     margin: 15px;
     font-size: 18px;
     transition: .3s;
+    position: relative; /* تحسين بسيط: خط تحت الرابط */
 }
-
 
 nav a:hover {
-    color:#ffd000;
+    color: #ffd000;
 }
 
+nav a::after { /* خط أصفر يطلع تحت الرابط */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #ffd000;
+    transition: width .3s;
+}
 
+nav a:hover::after {
+    width: 100%;
+}
 
 /* ===== Hero ===== */
-
 .hero {
-    text-align:center;
-    padding:80px 20px;
+    text-align: center;
+    padding: 80px 20px;
 }
-
 
 .hero h1 {
-    color:#ffd000;
-    font-size:45px;
+    color: #ffd000;
+    font-size: 45px;
 }
-
 
 .hero p {
-    color:#ddd;
-    font-size:22px;
+    color: #ddd;
+    font-size: 22px;
 }
-
-
 
 /* ===== Buttons ===== */
-
 button {
-    margin-top:25px;
-    padding:15px 45px;
-    border:none;
-    border-radius:30px;
-    background:#ffd000;
-    color:black;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 0 20px #ffd000;
-    transition:.3s;
+    margin-top: 25px;
+    padding: 15px 45px;
+    border: none;
+    border-radius: 30px;
+    background: #ffd000;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ffd000;
+    transition: .3s;
 }
-
 
 button:hover {
-    transform:scale(1.08);
-    box-shadow:0 0 40px #ffd000;
+    transform: scale(1.08);
+    box-shadow: 0 0 40px #ffd000;
 }
-
-
 
 /* ===== Sections ===== */
-
 .popular {
-    text-align:center;
-    padding:50px 20px;
+    text-align: center;
+    padding: 50px 20px;
 }
-
 
 .popular h2,
 .team h2 {
-    color:#ffd000;
-    font-size:38px;
+    color: #ffd000;
+    font-size: 38px;
 }
-
-
 
 /* ===== Comics Grid ===== */
-
 .comics {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,200px);
-    justify-content:center;
-    gap:35px;
-    margin-top:40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
+    gap: 35px;
+    margin-top: 40px;
 }
-
-
 
 /* ===== Comic Links ===== */
-
 .comic-link {
-    text-decoration:none;
-    color:inherit;
-    display:block;
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
-
-
 
 /* ===== Comic Card ===== */
-
 .card {
-
-    width:200px;
-
-    background:
-    linear-gradient(145deg,#191919,#080808);
-
-    padding:12px;
-
-    border-radius:18px;
-
-    border:1px solid rgba(255,208,0,.6);
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.35s;
+    width: 200px;
+    background: linear-gradient(145deg,#191919,#080808);
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,208,0,.6);
+    position: relative;
+    overflow: hidden;
+    transition: .35s;
 }
-
-
 
 .card::before {
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:15%;
-
-    width:70%;
-
-    height:3px;
-
-    background:#ffd000;
-
-    border-radius:10px;
-
-    box-shadow:0 0 12px #ffd000;
-
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background: #ffd000;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ffd000;
 }
-
-
 
 .card:hover {
-
-    transform:translateY(-10px);
-
-    box-shadow:
-    0 0 30px rgba(255,208,0,.5);
-
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(255,208,0,.5);
 }
-
-
 
 /* ===== Comic Cover ===== */
-
-
 .cover {
-
-    width:100%;
-
-    height:270px;
-
-    background:#111;
-
-    border-radius:12px;
-
-    overflow:hidden;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
+    width: 100%;
+    height: 270px;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-
 
 .cover img {
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    transition:.4s;
-
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: .4s;
 }
-
-
 
 .card:hover img {
-
-    transform:scale(1.05);
-
+    transform: scale(1.05);
 }
-
-
 
 /* ===== Comic Title ===== */
-
-
 .card h3 {
-
-    color:white;
-
-    font-size:17px;
-
-    margin:15px 5px 5px;
-
-    text-shadow:
-    0 0 8px rgba(255,255,255,.3);
-
+    color: white;
+    font-size: 17px;
+    margin: 15px 5px 5px;
+    text-shadow: 0 0 8px rgba(255,255,255,.3);
 }
-
-
 
 /* ===== Team ===== */
-
-
 .team {
-
-    text-align:center;
-
-    padding:50px;
-
-    background:#090909;
-
+    text-align: center;
+    padding: 50px;
+    background: #090909;
 }
-
-
 
 /* ===== Comic Page ===== */
-
-
 .comic-page {
-
-    max-width:600px;
-
-    margin:40px auto;
-
+    max-width: 600px;
+    margin: 40px auto;
 }
-
 
 .comic-page .cover {
-
-    height:350px;
-
+    height: 350px;
 }
-
-
 
 .comic-page .cover img {
-
-    max-height:95%;
-
-    width:auto;
-
+    max-height: 95%;
+    width: auto;
 }
-
-
 
 /* ===== Chapter Buttons ===== */
-
-
 .chapters {
-
-    max-width:600px;
-
-    margin:40px auto;
-
+    max-width: 600px;
+    margin: 40px auto;
 }
-
 
 .chapter {
-
-    background:#171717;
-
-    border:1px solid #ffd000;
-
-    padding:20px;
-
-    border-radius:15px;
-
-    transition:.3s;
-
+    background: #171717;
+    border: 1px solid #ffd000;
+    padding: 20px;
+    border-radius: 15px;
+    transition: .3s;
 }
-
 
 .chapter:hover {
-
-    transform:translateY(-5px);
-
-    box-shadow:0 0 25px rgba(255,208,0,.4);
-
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(255,208,0,.4);
 }
-
-
 
 /* ===== Reader ===== */
-
-
 .reader {
-
-    text-align:center;
-
-    padding:50px 20px;
-
+    text-align: center;
+    padding: 50px 20px;
 }
-
 
 .pages {
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:25px;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
 }
-
 
 .pages img {
-
-    max-width:800px;
-
-    width:90%;
-
-    border-radius:10px;
-
-    box-shadow:0 0 25px rgba(255,208,0,.25);
-
+    max-width: 800px;
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(255,208,0,.25);
 }
 
-
-
-/* ===== Mobile ===== */
-
-
-@media(max-width:700px){
-
-    .logo {
-        font-size:45px;
-    }
-
-
-    .comic-info {
-        flex-direction:column;
-        text-align:center;
-    }
-
-
-    nav a {
-        display:block;
-        margin:12px;
-    }
-
-}
 /* ===== Mobile Menu ===== */
-
 .menu-btn {
     display: none;
     font-size: 35px;
@@ -431,32 +279,44 @@ button:hover {
     cursor: pointer;
 }
 
-
 @media(max-width:700px){
-
-    .menu-btn {
-        display:block;
-        margin-top:20px;
+    .logo {
+        font-size: 45px;
     }
 
-
-    nav {
-        display:none;
-        flex-direction:column;
-        background:#111;
-        padding:20px;
-        border-radius:15px;
-        margin-top:15px;
+    .comic-info {
+        flex-direction: column;
+        text-align: center;
     }
-
 
     nav a {
-        margin:12px;
+        display: block;
+        margin: 12px;
     }
 
+    .menu-btn {
+        display: block;
+        margin-top: 20px;
+    }
+
+    nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 15px;
+    }
+
+    nav a {
+        margin: 12px;
+    }
 
     nav.show {
-        display:flex;
+        display: flex;
     }
 
-}
+    body {
+        padding-top: 170px; /* أقل شوي للجوال */
+    }
+    }
