@@ -2,29 +2,23 @@
     box-sizing: border-box;
 }
 
-body {
 html {
     background: #050505;
 }
 
 body {
     margin: 0;
+    min-height: 100vh;
     font-family: "Tahoma", Arial, sans-serif;
     color: white;
-    background: transparent;
-}
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
+    background-image:
         linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
         url("images/background.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
+
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: repeat-y;
 }
 
 /* ===== Header ثابت 100% ===== */
