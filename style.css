@@ -16,9 +16,10 @@ body {
 
 header {
     text-align: center;
-    padding: 45px 20px;
+    padding: 20px;
     background: rgba(0,0,0,.85);
     border-bottom: 3px solid #ffd000;
+};
 }
 
 
@@ -28,12 +29,13 @@ header {
     align-items: center;
 }
 
-.logo img {
-    width: 240px;
-    max-width: 90%;
+..logo img {
+    width: 180px;
+    max-width: 85%;
     height: auto;
-    filter: drop-shadow(0 0 12px rgba(255,208,0,.6));
-    transition: .3s;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 12px rgba(255,208,0,.45));
 }
 
 .logo img:hover {
