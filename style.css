@@ -23,14 +23,22 @@ header {
 
 
 .logo {
-    font-size: 65px;
-    font-weight: 900;
-    color: #ffd000;
-    text-shadow:
-    0 0 15px #ffd000,
-    0 0 35px rgba(255,208,0,.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.logo img {
+    width: 240px;
+    max-width: 90%;
+    height: auto;
+    filter: drop-shadow(0 0 12px rgba(255,208,0,.6));
+    transition: .3s;
+}
+
+.logo img:hover {
+    transform: scale(1.03);
+}
 
 
 header p {
