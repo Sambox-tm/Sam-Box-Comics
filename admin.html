@@ -123,7 +123,7 @@ label{
 
 <select id="status">
 
-<option>مستمر</option>
+<option>قيد الترجمة</option>
 
 <option>مكتمل</option>
 
@@ -560,7 +560,16 @@ token,
 
 
 }
+const pagesInfo = {
+    pages: pages.length
+};
 
+await uploadFile(
+    `comics/${comic}/issue-${issue}/pages.json`,
+    encode(JSON.stringify(pagesInfo, null, 2)),
+    token,
+    `Add pages.json for issue ${issue}`
+);
 
 
 alert("تمت إضافة العدد بنجاح 🎉");
