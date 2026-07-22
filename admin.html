@@ -31,6 +31,7 @@ h1 {
 }
 
 input, textarea, select {
+
     width:100%;
     padding:15px;
     margin:10px 0;
@@ -38,9 +39,11 @@ input, textarea, select {
     color:white;
     border:1px solid #ffd000;
     border-radius:10px;
+
 }
 
 button {
+
     width:100%;
     padding:18px;
     margin-top:20px;
@@ -51,6 +54,7 @@ button {
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
+
 }
 
 </style>
@@ -64,32 +68,47 @@ button {
 <div class="box">
 
 <h1>لوحة SamBox</h1>
+
+
 <input id="token" type="password" placeholder="GitHub Token">
-    <button onclick="saveToken()">
+
+<button onclick="saveToken()">
 حفظ التوكن
-    </button>
+</button>
+
+
 <input id="title" placeholder="اسم الكوميكس">
+
 
 <textarea id="description" placeholder="وصف الكوميكس"></textarea>
 
+
 <select id="status">
+
 <option>مستمر</option>
 <option>مكتمل</option>
+<option>متوقف</option>
+
 </select>
 
-<input id="pages" type="number" placeholder="عدد الصفحات">
 
 
 <label>صورة الغلاف:</label>
+
 <input id="cover" type="file" accept="image/*">
 
 
+
 <label>صفحات الكوميكس:</label>
+
 <input id="comicPages" type="file" accept="image/*" multiple>
 
 
+
 <button onclick="createComic()">
+
 إنشاء الكوميكس
+
 </button>
 
 
@@ -106,73 +125,63 @@ alert("تم حفظ التوكن");
 
 }
 
-    </script>
-<script>
-
-async function createComic(){
-
-const token = localStorage.getItem("sambox_token");
-
-if(!token){
-alert("أدخل GitHub Token أولاً");
-return;
-}
 
 
-const title = document.getElementById("title").value;
-const description = document.getElementById("description").value;
-const status = document.getElementById("status").value;
-const pages = document.getElementById("pages").value;
+function encode(data){
 
-
-if(!title){
-alert("اكتب اسم الكوميكس");
-return;
-}
-
-
-const folder = title
-.replace(/\s+/g,"-")
-.toLowerCase();
-
-
-const info = {
-
-title:title,
-description:description,
-status:status,
-pages:pages
-
-};
-
-
-const content = btoa(
+return btoa(
 unescape(
-encodeURIComponent(
-JSON.stringify(info,null,2)
-)
+encodeURIComponent(data)
 )
 );
 
+}
+
+
+
+async function fileToBase64(file){
+
+return new Promise((resolve)=>{
+
+let reader = new FileReader();
+
+reader.onload = ()=>{
+
+resolve(
+reader.result.split(",")[1]
+);
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+
+async function uploadFile(path, content, token, message){
 
 const url =
-`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/comics/${folder}/info.json`;
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`;
 
 
-const response = await fetch(url,{
+return fetch(url,{
 
 method:"PUT",
 
 headers:{
 
 "Authorization":"token "+token,
+
 "Content-Type":"application/json"
 
 },
 
 body:JSON.stringify({
 
-message:"Add comic "+title,
+message:message,
 
 content:content
 
@@ -181,20 +190,157 @@ content:content
 });
 
 
-if(response.ok){
+}
 
-alert("تم إنشاء الكوميكس بنجاح 🎉");
 
-}else{
 
-alert("حدث خطأ، تأكد من التوكن والصلاحيات");
+async function createComic(){
+
+
+const token =
+localStorage.getItem("sambox_token");
+
+
+if(!token){
+
+alert("أدخل التوكن أولاً");
+
+return;
 
 }
 
 
+
+const title =
+document.getElementById("title").value;
+
+
+const description =
+document.getElementById("description").value;
+
+
+const status =
+document.getElementById("status").value;
+
+
+const cover =
+document.getElementById("cover").files[0];
+
+
+const pages =
+[
+...document.getElementById("comicPages").files
+];
+
+
+
+if(!title || !cover || pages.length===0){
+
+alert("أدخل اسم الكوميكس والغلاف والصفحات");
+
+return;
+
 }
 
-    </script>
+
+
+const folder =
+title
+.trim()
+.replace(/\s+/g,"-")
+.toLowerCase();
+
+
+
+const info = {
+
+title:title,
+
+description:description,
+
+status:status,
+
+pages:pages.length
+
+};
+
+
+
+let infoResult =
+await uploadFile(
+
+`comics/${folder}/info.json`,
+
+encode(
+JSON.stringify(info,null,2)
+),
+
+token,
+
+"Add comic info"
+
+);
+
+
+
+if(!infoResult.ok){
+
+alert("فشل إنشاء معلومات الكوميكس");
+
+return;
+
+}
+
+
+
+
+await uploadFile(
+
+`comics/${folder}/cover.jpg`,
+
+await fileToBase64(cover),
+
+token,
+
+"Add comic cover"
+
+);
+
+
+
+
+
+for(let i=0;i<pages.length;i++){
+
+
+await uploadFile(
+
+`comics/${folder}/page-${i+1}.jpg`,
+
+await fileToBase64(pages[i]),
+
+token,
+
+`Add page ${i+1}`
+
+);
+
+
+}
+
+
+
+
+alert("تم رفع الكوميكس بالكامل 🎉");
+
+
+}
+
+
+
+</script>
+
+
 </body>
 
 </html>
