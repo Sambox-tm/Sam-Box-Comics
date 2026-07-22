@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SamBox Comic</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="top-bar">
+
+<div class="logo">
+<img src="images/sambox-logo.png" alt="SamBox">
+</div>
+
+<div class="menu-btn">
+☰
+</div>
+
+</div>
+
+<nav>
+
+<a href="index.html">الرئيسية</a>
+
+<a href="comics.html">جميع الكوميكس</a>
+
+</nav>
+
+</header>
+
+<section class="popular">
+
+<div class="card" style="width:800px;max-width:95%;margin:auto;">
+
+<div class="cover" style="height:420px;">
+<img id="cover" src="">
+</div>
+
+<h1 id="title" style="color:#ffd000;"></h1>
+
+<p>
+<b>الحالة:</b>
+<span id="status"></span>
+</p>
+
+<p>
+<b>عدد الأعداد:</b>
+<span id="issues"></span>
+</p>
+
+<p>
+<b>نبذة:</b>
+</p>
+
+<p id="description"></p>
+
+<br>
+
+<div id="buttons"></div>
+
+</div>
+
+</section>
+
+<script>
+
+const params = new URLSearchParams(location.search);
+
+const comic = params.get("comic");
+
+fetch(`comics/${comic}/info.json`)
+
+.then(r=>r.json())
+
+.then(info=>{
+
+document.getElementById("title").textContent=info.title;
+
+document.getElementById("status").textContent=info.status;
+
+document.getElementById("description").textContent=info.description;
+
+document.getElementById("issues").textContent=info.issues;
+
+document.getElementById("cover").src=`comics/${comic}/cover.jpg`;
+
+let html="";
+
+for(let i=1;i<=info.issues;i++){
+
+html+=`
+<a href="reader.html?comic=${comic}&issue=${i}">
+<button>العدد ${i}</button>
+</a>
+`;
+
+}
+
+document.getElementById("buttons").innerHTML=html;
+
+});
+
+const menu=document.querySelector(".menu-btn");
+const nav=document.querySelector("nav");
+
+menu.onclick=()=>nav.classList.toggle("show");
+
+</script>
+
+</body>
+
+</html>
