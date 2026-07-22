@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: Sambox-tm/Sam-Box-Comics
+  name: git-gateway
   branch: main
 
 media_folder: "images"
