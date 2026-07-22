@@ -99,11 +99,15 @@ button {
 
 
 
-<label>صفحات الكوميكس:</label>
+<label>عدد الأعداد:</label>
 
-<input id="comicPages" type="file" accept="image/*" multiple>
+<input id="issues" type="number" placeholder="مثال: 5">
 
 
+<div id="issuesBox"></div>
+<button onclick="generateIssues()">
+تجهيز الأعداد
+</button>
 
 <button onclick="createComic()">
 
@@ -192,7 +196,34 @@ content:content
 
 }
 
+function generateIssues(){
 
+let count = document.getElementById("issues").value;
+
+let box = document.getElementById("issuesBox");
+
+box.innerHTML="";
+
+
+for(let i=1;i<=count;i++){
+
+box.innerHTML += `
+
+<label>
+صفحات العدد ${i}:
+</label>
+
+<input 
+type="file" 
+id="issue-${i}" 
+accept="image/*" 
+multiple>
+
+`;
+
+}
+
+}
 
 async function createComic(){
 
