@@ -64,7 +64,10 @@ button {
 <div class="box">
 
 <h1>لوحة SamBox</h1>
-
+<input id="token" type="password" placeholder="GitHub Token">
+    <button onclick="saveToken()">
+حفظ التوكن
+    </button>
 <input id="title" placeholder="اسم الكوميكس">
 
 <textarea id="description" placeholder="وصف الكوميكس"></textarea>
@@ -91,7 +94,19 @@ button {
 
 
 </div>
+<script>
 
+function saveToken(){
+
+let token = document.getElementById("token").value;
+
+localStorage.setItem("sambox_token", token);
+
+alert("تم حفظ التوكن");
+
+}
+
+    </script>
 
 </body>
 
