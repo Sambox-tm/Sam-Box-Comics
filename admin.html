@@ -88,7 +88,7 @@ button {
 <input id="comicPages" type="file" accept="image/*" multiple>
 
 
-<button>
+<button onclick="createComic()">
 إنشاء الكوميكس
 </button>
 
@@ -107,7 +107,94 @@ alert("تم حفظ التوكن");
 }
 
     </script>
+<script>
 
+async function createComic(){
+
+const token = localStorage.getItem("sambox_token");
+
+if(!token){
+alert("أدخل GitHub Token أولاً");
+return;
+}
+
+
+const title = document.getElementById("title").value;
+const description = document.getElementById("description").value;
+const status = document.getElementById("status").value;
+const pages = document.getElementById("pages").value;
+
+
+if(!title){
+alert("اكتب اسم الكوميكس");
+return;
+}
+
+
+const folder = title
+.replace(/\s+/g,"-")
+.toLowerCase();
+
+
+const info = {
+
+title:title,
+description:description,
+status:status,
+pages:pages
+
+};
+
+
+const content = btoa(
+unescape(
+encodeURIComponent(
+JSON.stringify(info,null,2)
+)
+)
+);
+
+
+const url =
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/comics/${folder}/info.json`;
+
+
+const response = await fetch(url,{
+
+method:"PUT",
+
+headers:{
+
+"Authorization":"token "+token,
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+message:"Add comic "+title,
+
+content:content
+
+})
+
+});
+
+
+if(response.ok){
+
+alert("تم إنشاء الكوميكس بنجاح 🎉");
+
+}else{
+
+alert("حدث خطأ، تأكد من التوكن والصلاحيات");
+
+}
+
+
+}
+
+    </script>
 </body>
 
 </html>
