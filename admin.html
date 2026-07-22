@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>لوحة SamBox</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.admin{
+max-width:700px;
+margin:40px auto;
+background:#111;
+padding:30px;
+border-radius:20px;
+border:2px solid #ffd000;
+}
+
+.admin h1{
+text-align:center;
+color:#ffd000;
+}
+
+.admin input,
+.admin textarea,
+.admin select{
+
+width:100%;
+padding:15px;
+margin:10px 0;
+background:#1b1b1b;
+color:white;
+border:1px solid #ffd000;
+border-radius:12px;
+font-size:17px;
+
+}
+
+.admin button{
+
+width:100%;
+padding:18px;
+margin-top:20px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="admin">
+
+<h1>لوحة إضافة كوميكس</h1>
+
+<input id="title" placeholder="اسم الكوميكس">
+
+<textarea id="desc" rows="5" placeholder="الوصف"></textarea>
+
+<select id="status">
+
+<option>مكتمل</option>
+
+<option>مستمر</option>
+
+</select>
+
+<input id="chapters" type="number" placeholder="عدد الأعداد">
+
+<input type="file">
+
+<input type="file" multiple>
+
+<button onclick="createComic()">
+
+إنشاء الكوميكس
+
+</button>
+
+</div>
+
+<script>
+
+function createComic(){
+
+alert("في الخطوة القادمة سنجعل الصفحة تولد ملفات الكوميكس تلقائياً.");
+
+}
+
+</script>
+
+</body>
+
+</html>
