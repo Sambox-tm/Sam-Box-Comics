@@ -1,230 +1,1170 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 
-* {
-    font-family: 'Cairo', sans-serif;
+:root {
+    --gold: #ffd000;
+    --gold-light: #ffe875;
+    --black: #050505;
+    --card: #111;
+    --gray: #aaa;
+    --shadow: 0 0 30px rgba(255,208,0,.25);
 }
+
 * {
     box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+    scroll-behavior: smooth;
 }
 
 html {
-    background: #050505;
+    background: var(--black);
 }
 
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: "Tahoma", Arial, sans-serif;
     color: white;
+    overflow-x: hidden;
 
-    background-image:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("images/background.jpg");
+    background:
+    linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.85)
+    ),
+    url("images/background.jpg");
 
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* ===== Header ثابت 100% ===== */
+
+/* =========================
+   HEADER
+========================= */
+
 header {
-    text-align: center;
-    padding: 15px 20px;
-    background: rgba(0,0,0,.95);
-    border-bottom: 3px solid #ffd000;
-    
-    position: fixed; /* يثبت فوق */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999; /* فوق أي شي */
-    backdrop-filter: blur(5px); /* تحسين بسيط */
+
+    position: fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    z-index:9999;
+
+    padding:15px 30px;
+
+    background:
+    rgba(0,0,0,.85);
+
+    backdrop-filter: blur(15px);
+
+    border-bottom:
+    2px solid var(--gold);
+
+    box-shadow:
+    0 5px 30px rgba(0,0,0,.8);
+
 }
 
-.logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.logo img {
-    width: 160px; /* صغرته شوي عشان الجوال */
-    max-width: 80%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    filter: drop-shadow(0 0 12px rgba(255,208,0,.6));
-    transition: .3s;
-}
+.top-bar {
 
-.logo img:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px #ffd000);
-}
-
-header p {
-    color: #ddd;
-    font-size: 16px;
-    margin: 8px 0 0 0;
-}
-
-/* ===== Navigation ===== */
-nav {
-    margin-top: 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 12px;
-    font-size: 16px;
-    transition: .3s;
-}
-
-nav a:hover {
-    color:#ffd000;
-}
-
-/* باقي الكود كله زي ما هو بدون تغيير */
-.hero { text-align:center; padding:80px 20px; }
-.hero h1 { color:#ffd000; font-size:45px; }
-.hero p { color:#ddd; font-size:22px; }
-
-button {
-    margin-top:25px; padding:15px 45px; border:none; border-radius:30px;
-    background:#ffd000; color:black; font-size:20px; font-weight:bold;
-    cursor:pointer; box-shadow:0 0 20px #ffd000; transition:.3s;
-}
-button:hover { transform:scale(1.08); box-shadow:0 0 40px #ffd000; }
-
-.popular { text-align:center; padding:50px 20px; }
-.popular h2, .team h2 { color:#ffd000; font-size:38px; }
-
-.comics {
-    display:grid; grid-template-columns:repeat(auto-fit,200px);
-    justify-content:center; gap:35px; margin-top:40px;
-}
-
-.comic-link { text-decoration:none; color:inherit; display:block; }
-
-.card {
-    width:200px; background: linear-gradient(145deg,#191919,#080808);
-    padding:12px; border-radius:18px; border:1px solid rgba(255,208,0,.6);
-    position:relative; overflow:hidden; transition:.35s;
-}
-.card::before {
-    content:""; position:absolute; top:0; left:15%; width:70%; height:3px;
-    background:#ffd000; border-radius:10px; box-shadow:0 0 12px #ffd000;
-}
-.card:hover { transform:translateY(-10px); box-shadow: 0 0 30px rgba(255,208,0,.5); }
-
-.cover { width:100%; height:270px; background:#111; border-radius:12px; overflow:hidden; display:flex; justify-content:center; align-items:center; }
-.cover img { width:100%; height:100%; object-fit:contain; transition:.4s; }
-.card:hover img { transform:scale(1.05); }
-.card h3 { color:white; font-size:17px; margin:15px 5px 5px; text-shadow: 0 0 8px rgba(255,255,255,.3); }
-
-.team { text-align:center; padding:50px; background:#090909; }
-.comic-page { max-width:600px; margin:40px auto; }
-.comic-page .cover { height:350px; }
-.comic-page .cover img { max-height:95%; width:auto; }
-
-.chapters { max-width:600px; margin:40px auto; }
-.chapter { background:#171717; border:1px solid #ffd000; padding:20px; border-radius:15px; transition:.3s; }
-.chapter:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(255,208,0,.4); }
-
-.reader { text-align:center; padding:50px 20px; }
-.pages { display:flex; flex-direction:column; align-items:center; gap:25px; }
-.pages img { max-width:800px; width:90%; border-radius:10px; box-shadow:0 0 25px rgba(255,208,0,.25); }
-
-.menu-btn { display: none; font-size: 35px; color: #ffd000; cursor: pointer; }
-
-@media(max-width:700px){
-    body { padding-top: 140px; } /* أقل للجوال */
-    .logo img { width: 130px; }
-    nav a { display:block; margin:12px; }
-    .menu-btn { display:block; margin-top:20px; }
-    nav { display:none; flex-direction:column; background:#111; padding:20px; border-radius:15px; margin-top:15px; }
-    nav.show { display:flex; }
-          }
-/* ========================= */
-/* Header V2 */
-/* ========================= */
-
-.top-bar{
     display:flex;
     justify-content:space-between;
     align-items:center;
+
 }
 
-.logo img{
+
+.logo img {
+
     width:180px;
-    height:auto;
+    max-width:70vw;
+
+    filter:
+    drop-shadow(0 0 15px var(--gold));
+
+    transition:.5s;
+
 }
 
-.menu-btn{
-    display:none;
-    font-size:32px;
-    color:#ffd000;
+
+.logo img:hover {
+
+    transform:
+    scale(1.08)
+    rotate(-2deg);
+
+    filter:
+    drop-shadow(0 0 30px var(--gold));
+
+}
+
+
+
+header p {
+
+    color:#ddd;
+
+    font-size:15px;
+
+}
+
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+
+nav a {
+
+    color:white;
+
+    text-decoration:none;
+
+    margin:0 15px;
+
+    font-weight:700;
+
+    position:relative;
+
+    transition:.3s;
+
+}
+
+
+
+nav a::after {
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+
+    left:0;
+
+    width:0;
+
+    height:3px;
+
+    background:var(--gold);
+
+    border-radius:20px;
+
+    transition:.3s;
+
+}
+
+
+
+nav a:hover {
+
+    color:var(--gold);
+
+}
+
+
+
+nav a:hover::after {
+
+    width:100%;
+
+}
+
+
+
+/* =========================
+ HERO
+========================= */
+
+
+.hero {
+
+    text-align:center;
+
+    padding:
+
+    180px 20px 80px;
+
+    animation:
+    fadeUp 1s ease;
+
+}
+
+
+.hero h1 {
+
+    font-size:
+
+    clamp(35px,6vw,60px);
+
+    color:var(--gold);
+
+    text-shadow:
+
+    0 0 20px rgba(255,208,0,.7);
+
+}
+
+
+.hero p {
+
+    color:#ddd;
+
+    font-size:22px;
+
+}
+
+
+
+button {
+
+
+    margin-top:25px;
+
+    padding:
+
+    16px 50px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:
+
+    linear-gradient(
+    45deg,
+    #ffd000,
+    #fff0a0
+    );
+
+
+    color:black;
+
+    font-size:20px;
+
+    font-weight:900;
+
     cursor:pointer;
-}
 
-/* الهاتف */
 
-@media (max-width:768px){
+    box-shadow:
 
-    .menu-btn{
-        display:block;
-    }
+    0 0 25px rgba(255,208,0,.6);
 
-    nav{
-        display:none;
-    }
+    transition:.4s;
 
 }
-body {
-    background-image: url("images/background.jpg") !important;
-    background-size: cover;
-    background-position: center;
+
+
+
+button:hover {
+
+
+    transform:
+
+    translateY(-5px)
+    scale(1.05);
+
+
+    box-shadow:
+
+    0 0 50px var(--gold);
+
 }
+
+
+
+/* =========================
+ SECTIONS
+========================= */
+
+
+.popular,
+.team {
+
+    text-align:center;
+
+    padding:
+
+    70px 20px;
+
+}
+
+
+
+.popular h2,
+.team h2 {
+
+
+    color:var(--gold);
+
+    font-size:
+
+    clamp(30px,5vw,45px);
+
+    text-shadow:
+
+    0 0 15px rgba(255,208,0,.5);
+
+}
+
+
+
+/* =========================
+ COMICS GRID
+========================= */
+
+
+.comics {
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(
+    auto-fit,
+    minmax(230px,1fr)
+    );
+
+    gap:40px;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:30px;
+
+}
+
+
+
+/* الرابط */
+
+.comic-link {
+
+    text-decoration:none;
+
+    color:white;
+
+}
+
+
+
+/* الكارت */
+
+
+.card {
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    linear-gradient(
+    145deg,
+    #1b1b1b,
+    #050505
+    );
+
+    border:
+
+    1px solid rgba(255,208,0,.5);
+
+    border-radius:25px;
+
+    padding:15px;
+
+
+    transition:
+
+    .5s;
+
+
+    animation:
+
+    fadeUp .8s ease;
+
+}
+
+
+
+.card::before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,208,0,.15),
+    transparent
+    );
+
+
+    transform:
+
+    translateX(-100%);
+
+    transition:.7s;
+
+}
+
+
+
+.card:hover::before {
+
+    transform:
+
+    translateX(100%);
+
+}
+
+
+
+.card:hover {
+
+
+    transform:
+
+    translateY(-15px);
+
+
+    box-shadow:
+
+    0 20px 50px rgba(255,208,0,.25);
+
+
+    border-color:
+
+    var(--gold);
+
+}
+
+
+
+/* الغلاف */
+
+
+.cover {
+
+
+    width:100%;
+
+    height:330px;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:#000;
+
+}
+
+
+
+.cover img {
+
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+
+    transition:.6s;
+
+}
+
+
+
+.card:hover .cover img {
+
+    transform:
+
+    scale(1.1);
+
+}
+
+
+
+/* العنوان */
+
+
+.card h3 {
+
+
+    color:white;
+
+    margin-top:18px;
+
+    font-size:22px;
+
+}
+/* =========================
+   COMIC DETAILS PAGE
+========================= */
+
+
+.comic-page {
+
+    max-width:900px;
+
+    margin:
+
+    160px auto 50px;
+
+    padding:30px;
+
+    text-align:center;
+
+}
+
+
+
+.comic-page .cover {
+
+    height:520px;
+
+    max-width:400px;
+
+    margin:auto;
+
+    border-radius:30px;
+
+    border:
+
+    2px solid var(--gold);
+
+    box-shadow:
+
+    0 0 40px rgba(255,208,0,.35);
+
+}
+
+
+
+.comic-page .cover img {
+
+    object-fit:contain;
+
+}
+
+
+
+.comic-page h1 {
+
+    color:var(--gold);
+
+    font-size:45px;
+
+    text-shadow:
+
+    0 0 20px rgba(255,208,0,.6);
+
+}
+
+
+
+/* =========================
+   CHAPTERS
+========================= */
+
+
+.chapters {
+
+    max-width:800px;
+
+    margin:50px auto;
+
+    padding:20px;
+
+}
+
+
+
+.chapter {
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #171717,
+    #080808
+    );
+
+
+    border:
+
+    1px solid rgba(255,208,0,.5);
+
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+
+    border-radius:20px;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.chapter:hover {
+
+
+    transform:
+
+    translateX(-10px);
+
+
+    box-shadow:
+
+    0 0 30px rgba(255,208,0,.35);
+
+
+    border-color:
+
+    var(--gold);
+
+}
+
+
+
+/* =========================
+   COMIC READER
+========================= */
+
+
+.reader {
+
+
+    padding:
+
+    150px 20px 70px;
+
+
+    text-align:center;
+
+}
+
+
+
+.reader h1 {
+
+
+    color:
+
+    var(--gold);
+
+
+    font-size:
+
+    40px;
+
+
+}
+
+
+
+.pages {
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:35px;
+
+}
+
+
+
+.pages img {
+
+
+    width:
+
+    min(95%,900px);
+
+
+    border-radius:18px;
+
+
+    border:
+
+    1px solid rgba(255,208,0,.35);
+
+
+    box-shadow:
+
+
+    0 0 35px rgba(0,0,0,.8);
+
+
+    transition:.5s;
+
+
+    animation:
+
+    pageShow .8s ease;
+
+
+}
+
+
+
+.pages img:hover {
+
+
+    transform:
+
+    scale(1.02);
+
+
+    box-shadow:
+
+
+    0 0 45px rgba(255,208,0,.4);
+
+}
+
+
+
+/* =========================
+ SEARCH
+========================= */
+
+
+.search-box {
+
+
+    text-align:center;
+
+    margin:
+
+    40px auto;
+
+
+}
+
+
+
+.search-box input {
+
+
+    width:
+
+    min(90%,500px);
+
+
+    padding:
+
+    16px 25px;
+
+
+    background:
+
+    rgba(0,0,0,.8);
+
+
+    border:
+
+    2px solid var(--gold);
+
+
+    border-radius:
+
+    50px;
+
+
+    color:white;
+
+
+    font-size:18px;
+
+
+    outline:none;
+
+
+    transition:.4s;
+
+
+}
+
+
+
+.search-box input:focus {
+
+
+    box-shadow:
+
+    0 0 30px rgba(255,208,0,.5);
+
+
+    transform:
+
+    scale(1.03);
+
+}
+
+
+
+/* =========================
+ FOOTER
+========================= */
+
+
 .footer {
-    text-align: center;
-    padding: 30px 10px;
-    margin-top: 50px;
-    color: white;
-    font-size: 14px;
+
+
+    text-align:center;
+
+
+    padding:
+
+    40px 20px;
+
+
+    margin-top:70px;
+
+
+    background:
+
+    rgba(0,0,0,.7);
+
+
+    border-top:
+
+    2px solid rgba(255,208,0,.5);
+
+
+    color:#ddd;
+
+
 }
+
+
 
 .telegram-link img {
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-    transition: transform 0.3s ease;
+
+
+    width:45px;
+
+    margin-top:15px;
+
+
+    transition:.4s;
+
+
+    filter:
+
+    drop-shadow(0 0 10px var(--gold));
+
+
 }
+
+
 
 .telegram-link img:hover {
-    transform: scale(1.15);
-}
-.search-box{
-    text-align:center;
-    margin:25px 0 40px;
+
+
+    transform:
+
+    scale(1.2)
+    rotate(10deg);
+
+
 }
 
-.search-box input{
-    width:90%;
-    max-width:420px;
-    padding:14px 20px;
-    border-radius:30px;
-    border:2px solid #ffd000;
+
+
+/* =========================
+ MOBILE
+========================= */
+
+
+.menu-btn {
+
+
+    display:none;
+
+
+    font-size:35px;
+
+
+    color:var(--gold);
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+@media(max-width:768px){
+
+
+
+header {
+
+    padding:12px;
+
+}
+
+
+
+.logo img {
+
+    width:130px;
+
+}
+
+
+
+.menu-btn {
+
+    display:block;
+
+}
+
+
+
+nav {
+
+
+    display:none;
+
+
+    position:absolute;
+
+
+    top:90px;
+
+    right:15px;
+
+
+    width:220px;
+
+
+    padding:20px;
+
+
     background:#111;
-    color:white;
-    font-size:18px;
-    outline:none;
+
+
+    border:
+
+    1px solid var(--gold);
+
+
+    border-radius:20px;
+
+
 }
 
-.search-box input::placeholder{
-    color:#999;
+
+
+nav a {
+
+
+    display:block;
+
+
+    margin:15px;
+
+
 }
 
-.search-box input:focus{
-    box-shadow:0 0 15px rgba(255,208,0,.5);
+
+
+nav.show {
+
+    display:block;
+
+}
+
+
+
+.hero {
+
+    padding-top:160px;
+
+}
+
+
+
+.comics {
+
+
+    grid-template-columns:
+
+    repeat(
+    2,
+    1fr
+    );
+
+
+    gap:15px;
+
+
+    padding:15px;
+
+
+}
+
+
+
+.card {
+
+    border-radius:18px;
+
+    padding:10px;
+
+}
+
+
+
+.cover {
+
+    height:240px;
+
+}
+
+
+
+.card h3 {
+
+
+    font-size:16px;
+
+}
+
+
+
+.comic-page {
+
+
+    padding:15px;
+
+}
+
+
+
+.comic-page .cover {
+
+
+    height:400px;
+
+}
+
+
+
+.comic-page h1 {
+
+
+    font-size:32px;
+
+}
+
+
+
+.chapter {
+
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+}
+
+
+
+/* =========================
+ ANIMATIONS
+========================= */
+
+
+@keyframes fadeUp {
+
+
+from {
+
+    opacity:0;
+
+    transform:
+
+    translateY(40px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:
+
+    translateY(0);
+
+}
+
+
+}
+
+
+
+@keyframes pageShow {
+
+
+from {
+
+    opacity:0;
+
+    transform:
+
+    translateY(50px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:
+
+    translateY(0);
+
+}
+
+
 }
