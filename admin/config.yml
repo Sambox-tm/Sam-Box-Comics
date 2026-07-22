@@ -12,6 +12,26 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "العنوان", name: "title", widget: "string"}
-      - {label: "الصورة", name: "image", widget: "image"}
-      - {label: "الوصف", name: "description", widget: "text"}
+      - label: "عنوان الكوميكس"
+        name: "title"
+        widget: "string"
+
+      - label: "الوصف"
+        name: "description"
+        widget: "text"
+
+      - label: "الحالة"
+        name: "status"
+        widget: "select"
+        options:
+          - "مستمر"
+          - "مكتمل"
+          - "متوقف"
+
+      - label: "عدد الصفحات"
+        name: "pages"
+        widget: "number"
+
+      - label: "صورة الغلاف"
+        name: "cover"
+        widget: "image"
