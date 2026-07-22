@@ -67,8 +67,10 @@ button {
 
 <div class="box">
 
-<h1>لوحة SamBox</h1>
+<h1>لوحة إدارة SamBox</h1>
 
+<hr>
+<h2 style="color:#ffd000;">إنشاء كوميكس جديد</h2>
 
 <input id="token" type="password" placeholder="GitHub Token">
 
@@ -114,7 +116,26 @@ button {
 إنشاء الكوميكس
 
 </button>
+<hr>
 
+<h2 style="color:#ffd000;">
+إضافة عدد جديد
+</h2>
+
+<input id="existingComic" placeholder="اسم مجلد الكوميكس (مثال: adventure-time)">
+
+<input id="issueNumber" type="number" placeholder="رقم العدد">
+
+<label>
+صفحات العدد:
+</label>
+
+<input id="newIssuePages" type="file" accept="image/*" multiple>
+
+
+<button onclick="addIssue()">
+إضافة العدد
+</button>
 
 </div>
 <script>
