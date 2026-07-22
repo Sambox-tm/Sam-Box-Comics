@@ -119,6 +119,25 @@ button {
 <hr>
 
 <h2 style="color:#ffd000;">
+إضافة عدد جديد لكوميكس موجود
+</h2>
+
+<input id="existingComic" placeholder="اسم الكوميكس (مثال: وقت-المغامرة-2012)">
+
+<input id="issueNumber" type="number" placeholder="رقم العدد">
+
+<label>
+صفحات العدد:
+</label>
+
+<input id="newIssuePages" type="file" accept="image/*" multiple>
+
+<button onclick="addIssue()">
+إضافة العدد
+</button>
+<hr>
+
+<h2 style="color:#ffd000;">
 إضافة عدد جديد
 </h2>
 
@@ -388,7 +407,53 @@ alert("تم رفع الكوميكس بالكامل 🎉");
 
 }
 
+async function addIssue(){
 
+const token = localStorage.getItem("sambox_token");
+
+if(!token){
+alert("أدخل التوكن أولاً");
+return;
+}
+
+const comic = document.getElementById("existingComic").value;
+
+const issue = document.getElementById("issueNumber").value;
+
+const pages = [
+...document.getElementById("newIssuePages").files
+];
+
+
+if(!comic || !issue || pages.length===0){
+
+alert("أدخل اسم الكوميكس ورقم العدد والصفحات");
+
+return;
+
+}
+
+
+for(let i=0;i<pages.length;i++){
+
+await uploadFile(
+
+`comics/${comic}/issue-${issue}/page-${i+1}.jpg`,
+
+await fileToBase64(pages[i]),
+
+token,
+
+`Add issue ${issue} page ${i+1}`
+
+);
+
+}
+
+
+alert("تمت إضافة العدد بنجاح 🎉");
+
+    }
 
 </script>
 
