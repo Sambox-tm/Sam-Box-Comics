@@ -472,7 +472,14 @@ token,
 
 );
 
-
+await uploadFile(
+    `comics/${folder}/issue-${i}/pages.json`,
+    encode(JSON.stringify({
+        pages: pages.length
+    }, null, 2)),
+    token,
+    `Add pages.json for issue ${i}`
+);
 }
 
 
