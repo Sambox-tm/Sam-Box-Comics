@@ -175,7 +175,47 @@ function searchComics() {
 
 }
 </script>
+<script>
+(async function () {
 
+const comicsList = document.getElementById("comicsList");
+
+try{
+
+const folders = [
+"وقت-المغامرة-2012"
+];
+
+for(const comic of folders){
+
+const res = await fetch(`comics/${comic}/info.json`);
+
+if(!res.ok) continue;
+
+const info = await res.json();
+
+comicsList.innerHTML += `
+<a href="comic.html?comic=${encodeURIComponent(comic)}" class="comic-link">
+
+<div class="card">
+
+<div class="cover">
+<img src="comics/${comic}/cover.jpg" alt="${info.title}">
+</div>
+
+<h3>${info.title}</h3>
+
+</div>
+
+</a>
+`;
+
+}
+
+}catch(e){}
+
+})();
+    </script>
 </body>
 
 </html>
