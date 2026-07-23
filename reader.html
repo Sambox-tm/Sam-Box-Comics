@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SamBox Reader</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.reader-card{
+    width:800px;
+    max-width:95%;
+    margin:auto;
+    padding:25px;
+}
+.reader-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+.reader-buttons a{
+    text-decoration:none;
+}
+.reader-error{
+    text-align:center;
+    padding:40px 20px;
+}
+.reader-error h1{
+    color:#ffd000;
+    margin-bottom:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="top-bar">
+        <div class="logo">
+            <img src="images/sambox-logo.png" alt="SamBox">
+        </div>
+        <div class="menu-btn">☰</div>
+    </div>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="comics.html">جميع الكوميكس</a>
+    </nav>
+</header>
+
+<section class="reader">
+    <div class="card reader-card">
+        <h1 id="comicTitle" style="color:#ffd000;"></h1>
+        <h2 id="issueTitle" style="color:#ddd;"></h2>
+
+        <div class="pages" id="pages"></div>
+
+        <div class="reader-buttons">
+            <a id="backLink" href="comics.html">
+                <button>⬅ العودة للكوميكس</button>
+            </a>
+
+            <a id="prevLink" href="#" style="display:none;">
+                <button>⬅ العدد السابق</button>
+            </a>
+
+            <a id="nextLink" href="#" style="display:none;">
+                <button>العدد التالي ➡</button>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+const menu = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
+
+menu.onclick = () => {
+    nav.classList.toggle("show");
+};
+
+function showError(message) {
+    document.querySelector(".reader").innerHTML = `
+        <div class="reader-error">
+            <h1>${message}</h1>
+            <a href="comics.html"><button>العودة إلى جميع الكوميكس</button></a>
+        </div>
+    `;
+}
+
+(async function initReader() {
+    const params = new URLSearchParams(location.search);
+    const comic = params.get("comic");
+    const issue = parseInt(params.get("issue") || "1", 10);
+
+    if (!comic) {
+        showError("لم يتم تحديد الكوميكس.");
+        return;
+    }
+
+    const comicName = decodeURIComponent(comic);
+    const comicPath = `comics/${comicName}`;
+    const issuePath = `${comicPath}/issue-${issue}`;
+
+    try {
+        const infoRes = await fetch(`${comicPath}/info.json`);
+        if (!infoRes.ok) throw new Error("info missing");
+        const info = await infoRes.json();
+
+        const pagesRes = await fetch(`${issuePath}/pages.json`);
+        if (!pagesRes.ok) throw new Error("pages missing");
+        const pagesInfo = await pagesRes.json();
+
+        const pageCount = Number(pagesInfo.pages || 0);
+        if (!pageCount) throw new Error("empty pages count");
+
+        document.title = `${info.title} - العدد ${issue} | SamBox`;
+        document.getElementById("comicTitle").textContent = info.title;
+        document.getElementById("issueTitle").textContent = `العدد ${issue}`;
+        document.getElementById("backLink").href = `comic.html?comic=${encodeURIComponent(comicName)}`;
+
+        let html = "";
+        for (let i = 1; i <= pageCount; i++) {
+            html += `<img src="${issuePath}/page-${i}.jpg" alt="صفحة ${i}">`;
+        }
+        document.getElementById("pages").innerHTML = html;
+
+        const prevLink = document.getElementById("prevLink");
+        if (issue > 1) {
+            prevLink.href = `reader.html?comic=${encodeURIComponent(comicName)}&issue=${issue - 1}`;
+            prevLink.style.display = "inline-block";
+        }
+
+        const nextIssue = issue + 1;
+        const nextRes = await fetch(`${comicPath}/issue-${nextIssue}/pages.json`);
+        if (nextRes.ok) {
+            const nextLink = document.getElementById("nextLink");
+            nextLink.href = `reader.html?comic=${encodeURIComponent(comicName)}&issue=${nextIssue}`;
+            nextLink.style.display = "inline-block";
+        }
+    } catch (e) {
+        showError("تعذر تحميل صفحات العدد.");
+    }
+})();
+</script>
+
+</body>
+</html>
