@@ -89,53 +89,6 @@
 
 
 
-
-
-<!-- كوميكس ثاني -->
-
-<div class="card">
-
-
-<div class="cover">
-
-غلاف الكوميكس
-
-</div>
-
-
-<h3>
-اسم الكوميكس الثاني
-</h3>
-
-
-</div>
-
-
-
-
-
-<!-- كوميكس ثالث -->
-
-<div class="card">
-
-
-<div class="cover">
-
-غلاف الكوميكس
-
-</div>
-
-
-<h3>
-اسم الكوميكس الثالث
-</h3>
-
-
-</div>
-
-
-
-
 </div>
 
 
@@ -180,11 +133,7 @@ function searchComics() {
 
 const comicsList = document.getElementById("comicsList");
 
-try{
-
-const folders = [
-"وقت-المغامرة-2012"
-];
+const folders = await fetch("comics/list.json").then(r => r.json());
 
 for(const comic of folders){
 
