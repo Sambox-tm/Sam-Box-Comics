@@ -131,6 +131,8 @@ function searchComics() {
 <script>
 (async function () {
 
+try {
+
 const comicsList = document.getElementById("comicsList");
 
 const folders = await fetch("comics/list.json").then(r => r.json());
@@ -161,10 +163,14 @@ comicsList.innerHTML += `
 
 }
 
-}catch(e){}
+} catch(e) {
+
+console.log(e);
+
+}
 
 })();
-    </script>
+</script>
 </body>
 
 </html>
