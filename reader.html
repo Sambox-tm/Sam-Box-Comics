@@ -45,16 +45,17 @@ flex-wrap:wrap;
 
 }
 
-
-.issues-button{
+.header-issues{
 
 width:auto;
 
-padding:10px 25px;
+padding:8px 15px;
 
 font-size:16px;
 
 margin:0;
+
+border-radius:20px;
 
 }
 
@@ -116,10 +117,16 @@ color:#ffd000;
 
 <header>
     <div class="top-bar">
-        <div class="logo">
-            <img src="images/sambox-logo.png" alt="SamBox">
-        </div>
-        <div class="menu-btn">☰</div>
+
+    <div class="logo">
+        <img src="images/sambox-logo.png" alt="SamBox">
+    </div>
+
+    <button id="issuesButton" class="header-issues">
+    </button>
+
+    <div class="menu-btn">☰</div>
+
     </div>
 
     <nav>
@@ -127,7 +134,7 @@ color:#ffd000;
         <a href="comics.html">جميع الكوميكس</a>
     </nav>
 </header>
-
+<div id="issuesMenu" class="issues-menu"></div>
 <section class="reader">
     <div class="reader-top">
 
@@ -137,8 +144,8 @@ color:#ffd000;
 
 <h2 id="issueTitle" style="color:#ddd;"></h2>
 
-<button id="issuesButton" class="issues-button">
-📚 الأعداد
+<button id="issuesButton" class="header-issues">
+ الأعداد
 </button>
 
 </div>
