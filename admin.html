@@ -391,13 +391,15 @@ if(!list.includes(folder)){
 list.push(folder);
 }
 
-await uploadFile(
+const result = await uploadFile(
 "comics/list.json",
 encode(JSON.stringify(list,null,2)),
 token,
 "Update comics list",
 sha
 );
+
+console.log(await result.text());
 
 alert("تم إنشاء الكوميكس بنجاح 🎉");
 
