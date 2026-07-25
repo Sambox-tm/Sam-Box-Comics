@@ -229,15 +229,17 @@ issuesMenu.style.display === "block"
 };
 
 
-for(let i=1;i<=info.issues;i++){
+let menuHTML = "";
 
-issuesMenu.innerHTML += `
-<a href="reader.html?comic=${encodeURIComponent(comicName)}&issue=${i}">
-العدد ${i}
-</a>
-`;
-
+for (let i = 1; i <= info.issues; i++) {
+    menuHTML += `
+        <a href="reader.html?comic=${encodeURIComponent(comicName)}&issue=${i}">
+            العدد ${i}
+        </a>
+    `;
 }
+
+issuesMenu.innerHTML = menuHTML;
         document.getElementById("backLink").href = `comic.html?comic=${encodeURIComponent(comicName)}`;
 
         let html = "";
