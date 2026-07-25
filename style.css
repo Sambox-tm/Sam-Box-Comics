@@ -464,7 +464,7 @@ COMIC DETAILS PAGE
 
 max-width:900px;  
 
-margin:160px auto 50px;  
+margin:200px auto 50px;  
 
 padding:30px;  
 
@@ -904,12 +904,12 @@ height:240px;
 font-size:16px;
 
 }
-
+  
 .comic-page {
-
+    
 padding:15px;
-margin-top:140px;
-
+margin-top:170px;
+    
 }
 
 .comic-page .cover {
