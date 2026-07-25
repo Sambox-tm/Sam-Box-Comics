@@ -1,1164 +1,986 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 
 :root {
-    --gold: #ffd000;
-    --gold-light: #ffe875;
-    --black: #050505;
-    --card: #111;
-    --gray: #aaa;
-    --shadow: 0 0 30px rgba(255,208,0,.25);
+--gold: #ffd000;
+--gold-light: #ffe875;
+--black: #050505;
+--card: #111;
+--gray: #aaa;
+--shadow: 0 0 30px rgba(255,208,0,.25);
 }
 
-* {
-    box-sizing: border-box;
-    font-family: 'Cairo', sans-serif;
-    scroll-behavior: smooth;
+{
+box-sizing: border-box;
+font-family: 'Cairo', sans-serif;
+scroll-behavior: smooth;
 }
+
 
 html {
-    background: var(--black);
+background: var(--black);
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    color: white;
-    overflow-x: hidden;
+margin: 0;
+min-height: 100vh;
+color: white;
+overflow-x: hidden;
 
-    background:
-    linear-gradient(
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.85)
-    ),
-    url("images/background.jpg");
+background:  
+linear-gradient(  
+    rgba(0,0,0,.65),  
+    rgba(0,0,0,.85)  
+),  
+url("images/background.jpg");  
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+background-size: cover;  
+background-position: center;  
+background-attachment: fixed;
+
 }
 
-
 /* =========================
-   HEADER
+HEADER
 ========================= */
 
 header {
 
-    position: fixed;
-    top:0;
-    left:0;
+position: fixed;  
+top:0;  
+left:0;  
 
-    width:100%;
-    z-index:9999;
+width:100%;  
+z-index:9999;  
 
-    padding:8px 20px;
+padding:8px 20px;  
 
-    background:
-    rgba(0,0,0,.85);
+background:  
+rgba(0,0,0,.85);  
 
-    backdrop-filter: blur(15px);
+backdrop-filter: blur(15px);  
 
-    border-bottom:
-    2px solid var(--gold);
+border-bottom:  
+2px solid var(--gold);  
 
-    box-shadow:
-    0 5px 30px rgba(0,0,0,.8);
+box-shadow:  
+0 5px 30px rgba(0,0,0,.8);
 
 }
-
 
 .top-bar {
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:flex;  
+justify-content:space-between;  
+align-items:center;
+
 }
 
 .top-bar{
-    height:70px;
+height:70px;
 }
 
 .logo img {
 
-    width:180px;
-    max-width:70vw;
+width:180px;  
+max-width:70vw;  
 
-    filter:
-    drop-shadow(0 0 15px var(--gold));
+filter:  
+drop-shadow(0 0 15px var(--gold));  
 
-    transition:.5s;
+transition:.5s;
 
 }
-
 
 .logo img:hover {
 
-    transform:
-    scale(1.08)
-    rotate(-2deg);
+transform:  
+scale(1.08)  
+rotate(-2deg);  
 
-    filter:
-    drop-shadow(0 0 30px var(--gold));
+filter:  
+drop-shadow(0 0 30px var(--gold));
 
 }
-
-
 
 header p {
 
-    color:#ddd;
+color:#ddd;  
 
-    font-size:15px;
+font-size:15px;
 
 }
 
-
-
 /* =========================
-   NAVIGATION
+NAVIGATION
 ========================= */
-
 
 nav a {
 
-    color:white;
+color:white;  
 
-    text-decoration:none;
+text-decoration:none;  
 
-    margin:0 15px;
+margin:0 15px;  
 
-    font-weight:700;
+font-weight:700;  
 
-    position:relative;
+position:relative;  
 
-    transition:.3s;
+transition:.3s;
 
 }
-
-
 
 nav a::after {
 
-    content:"";
+content:"";  
 
-    position:absolute;
+position:absolute;  
 
-    bottom:-8px;
+bottom:-8px;  
 
-    left:0;
+left:0;  
 
-    width:0;
+width:0;  
 
-    height:3px;
+height:3px;  
 
-    background:var(--gold);
+background:var(--gold);  
 
-    border-radius:20px;
+border-radius:20px;  
 
-    transition:.3s;
+transition:.3s;
 
 }
-
-
 
 nav a:hover {
 
-    color:var(--gold);
+color:var(--gold);
 
 }
-
-
 
 nav a:hover::after {
 
-    width:100%;
+width:100%;
 
 }
 
-
-
 /* =========================
- HERO
+HERO
 ========================= */
-
 
 .hero {
 
-    text-align:center;
+text-align:center;  
 
-    padding:
+padding:  
 
-    180px 20px 80px;
+180px 20px 80px;  
 
-    animation:
-    fadeUp 1s ease;
+animation:  
+fadeUp 1s ease;
 
 }
-
 
 .hero h1 {
 
-    font-size:
+font-size:  
 
-    clamp(35px,6vw,60px);
+clamp(35px,6vw,60px);  
 
-    color:var(--gold);
+color:var(--gold);  
 
-    text-shadow:
+text-shadow:  
 
-    0 0 20px rgba(255,208,0,.7);
+0 0 20px rgba(255,208,0,.7);
 
 }
-
 
 .hero p {
 
-    color:#ddd;
+color:#ddd;  
 
-    font-size:22px;
+font-size:22px;
 
 }
-
-
 
 button {
 
+margin-top:25px;  
 
-    margin-top:25px;
+padding:  
 
-    padding:
+16px 50px;  
 
-    16px 50px;
+border:none;  
 
-    border:none;
+border-radius:50px;  
 
-    border-radius:50px;
+background:  
 
-    background:
-
-    linear-gradient(
-    45deg,
-    #ffd000,
-    #fff0a0
-    );
-
-
-    color:black;
-
-    font-size:20px;
-
-    font-weight:900;
-
-    cursor:pointer;
+linear-gradient(  
+45deg,  
+#ffd000,  
+#fff0a0  
+);  
 
 
-    box-shadow:
+color:black;  
 
-    0 0 25px rgba(255,208,0,.6);
+font-size:20px;  
 
-    transition:.4s;
+font-weight:900;  
+
+cursor:pointer;  
+
+
+box-shadow:  
+
+0 0 25px rgba(255,208,0,.6);  
+
+transition:.4s;
 
 }
-
-
 
 button:hover {
 
+transform:  
 
-    transform:
-
-    translateY(-5px)
-    scale(1.05);
+translateY(-5px)  
+scale(1.05);  
 
 
-    box-shadow:
+box-shadow:  
 
-    0 0 50px var(--gold);
+0 0 50px var(--gold);
 
 }
 
-
-
 /* =========================
- SECTIONS
+SECTIONS
 ========================= */
-
 
 .popular,
 .team {
 
-    text-align:center;
+text-align:center;  
 
-    padding:
+padding:  
 
-    70px 20px;
+70px 20px;
 
 }
-
-
 
 .popular h2,
 .team h2 {
 
+color:var(--gold);  
 
-    color:var(--gold);
+font-size:  
 
-    font-size:
+clamp(30px,5vw,45px);  
 
-    clamp(30px,5vw,45px);
+text-shadow:  
 
-    text-shadow:
-
-    0 0 15px rgba(255,208,0,.5);
+0 0 15px rgba(255,208,0,.5);
 
 }
 
-
-
 /* =========================
- COMICS GRID
+COMICS GRID
 ========================= */
-
 
 .comics {
 
-    display:grid;
+display:grid;  
 
-    grid-template-columns:
+grid-template-columns:  
 
-    repeat(
-    auto-fit,
-    minmax(230px,1fr)
-    );
+repeat(  
+auto-fit,  
+minmax(230px,1fr)  
+);  
 
-    gap:40px;
+gap:40px;  
 
-    max-width:1200px;
+max-width:1200px;  
 
-    margin:auto;
+margin:auto;  
 
-    padding:30px;
+padding:30px;
 
 }
-
-
 
 /* الرابط */
 
 .comic-link {
 
-    text-decoration:none;
+text-decoration:none;  
 
-    color:white;
+color:white;
 
 }
-
-
 
 /* الكارت */
 
-
 .card {
 
-    position:relative;
+position:relative;  
 
-    overflow:hidden;
+overflow:hidden;  
 
-    background:
+background:  
 
-    linear-gradient(
-    145deg,
-    #1b1b1b,
-    #050505
-    );
+linear-gradient(  
+145deg,  
+#1b1b1b,  
+#050505  
+);  
 
-    border:
+border:  
 
-    1px solid rgba(255,208,0,.5);
+1px solid rgba(255,208,0,.5);  
 
-    border-radius:25px;
+border-radius:25px;  
 
-    padding:15px;
-
-
-    transition:
-
-    .5s;
+padding:15px;  
 
 
-    animation:
+transition:  
 
-    fadeUp .8s ease;
+.5s;  
+
+
+animation:  
+
+fadeUp .8s ease;
 
 }
-
-
 
 .card::before {
 
-    content:"";
+content:"";  
 
-    position:absolute;
+position:absolute;  
 
-    inset:0;
+inset:0;  
 
-    background:
+background:  
 
-    linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,208,0,.15),
-    transparent
-    );
+linear-gradient(  
+120deg,  
+transparent,  
+rgba(255,208,0,.15),  
+transparent  
+);  
 
 
-    transform:
+transform:  
 
-    translateX(-100%);
+translateX(-100%);  
 
-    transition:.7s;
+transition:.7s;
 
 }
-
-
 
 .card:hover::before {
 
-    transform:
+transform:  
 
-    translateX(100%);
+translateX(100%);
 
 }
-
-
 
 .card:hover {
 
+transform:  
 
-    transform:
-
-    translateY(-15px);
-
-
-    box-shadow:
-
-    0 20px 50px rgba(255,208,0,.25);
+translateY(-15px);  
 
 
-    border-color:
+box-shadow:  
 
-    var(--gold);
+0 20px 50px rgba(255,208,0,.25);  
+
+
+border-color:  
+
+var(--gold);
 
 }
-
-
 
 /* الغلاف */
 
-
 .cover {
 
-    width:100%;
+width:100%;  
 
-    height:330px;
+height:330px;  
 
-    overflow:hidden;
+overflow:hidden;  
 
-    border-radius:18px;
+border-radius:18px;  
 
-    background:#000;
-
-}
-
-
-.card .cover img {
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
+background:#000;
 
 }
-
-
 
 .cover img {
 
+width:100%;  
 
-    width:100%;
+height:100%;  
 
-    height:100%;
-
-    object-fit:cover;
+object-fit:cover;  
 
 
-    transition:.6s;
+transition:.6s;
 
 }
-
-
 
 .card:hover .cover img {
 
-    transform:
+transform:  
 
-    scale(1.1);
+scale(1.1);
 
 }
-
-
 
 /* العنوان */
 
-
 .card h3 {
 
+color:white;  
 
-    color:white;
+margin-top:18px;  
 
-    margin-top:18px;
-
-    font-size:22px;
+font-size:22px;
 
 }
 /* =========================
-   COMIC DETAILS PAGE
+COMIC DETAILS PAGE
 ========================= */
-
 
 .comic-page {
 
-    max-width:900px;
+max-width:900px;  
 
-    margin:160px auto 50px;
+margin:110px auto 50px;  
 
-    padding:30px;
+padding:30px;  
 
-    text-align:center;
+text-align:center;
 
 }
 
-
-
-.comic-page .cover {
 .comic-page .cover {
 
-    height:520px;
+height:520px;  
 
-    max-width:400px;
+max-width:400px;  
 
-    margin:auto;
+margin:auto;  
 
-    border-radius:30px;
+border-radius:30px;  
 
-    border:2px solid var(--gold);
+border:  
 
-    box-shadow:0 0 40px rgba(255,208,0,.35);
+2px solid var(--gold);  
+
+box-shadow:  
+
+0 0 40px rgba(255,208,0,.35);
 
 }
 
 .comic-page .cover img {
 
-    object-fit:contain;
+object-fit:contain;
 
 }
-
-
 
 .comic-page h1 {
 
-    color:var(--gold);
+color:var(--gold);  
 
-    font-size:45px;
+font-size:45px;  
 
-    text-shadow:
+text-shadow:  
 
-    0 0 20px rgba(255,208,0,.6);
+0 0 20px rgba(255,208,0,.6);
 
 }
 
-
-
 /* =========================
-   CHAPTERS
+CHAPTERS
 ========================= */
-
 
 .chapters {
 
-    max-width:800px;
+max-width:800px;  
 
-    margin:50px auto;
+margin:50px auto;  
 
-    padding:20px;
+padding:20px;
 
 }
-
-
 
 .chapter {
 
+display:flex;  
 
-    display:flex;
+justify-content:space-between;  
 
-    justify-content:space-between;
-
-    align-items:center;
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    #171717,
-    #080808
-    );
+align-items:center;  
 
 
-    border:
+background:  
 
-    1px solid rgba(255,208,0,.5);
-
-
-    padding:20px;
-
-    margin-bottom:20px;
-
-
-    border-radius:20px;
+linear-gradient(  
+135deg,  
+#171717,  
+#080808  
+);  
 
 
-    transition:.4s;
+border:  
 
+1px solid rgba(255,208,0,.5);  
+
+
+padding:20px;  
+
+margin-bottom:20px;  
+
+
+border-radius:20px;  
+
+
+transition:.4s;
 
 }
-
-
 
 .chapter:hover {
 
+transform:  
 
-    transform:
-
-    translateX(-10px);
-
-
-    box-shadow:
-
-    0 0 30px rgba(255,208,0,.35);
+translateX(-10px);  
 
 
-    border-color:
+box-shadow:  
 
-    var(--gold);
+0 0 30px rgba(255,208,0,.35);  
+
+
+border-color:  
+
+var(--gold);
 
 }
 
-
-
 /* =========================
-   COMIC READER
+COMIC READER
 ========================= */
-
 
 .reader {
 
-    background:#000;
+background:#000;  
 
-    padding:140px 5px 50px;
+padding:140px 5px 50px;  
 
-    text-align:center;
+text-align:center;
 
 }
-
-
 
 .reader h1 {
 
+color:  
 
-    color:
-
-    var(--gold);
+var(--gold);  
 
 
-    font-size:
+font-size:  
 
-    40px;
-
+40px;
 
 }
-
-
 
 .pages {
 
-    display:flex;
+display:flex;  
 
-    flex-direction:column;
+flex-direction:column;  
 
-    align-items:center;
+align-items:center;  
 
-    gap:20px;
+gap:20px;  
 
-    width:100%;
+width:100%;
 
 }
-
-
 
 .pages img {
 
-    display:block;
+display:block;  
 
-    width:100%;
+width:100%;  
 
-    max-width:1200px;
+max-width:1200px;  
 
-    height:auto;
+height:auto;  
 
-    border-radius:5px;
+border-radius:5px;  
 
-    border:none;
+border:none;  
 
-    box-shadow:0 0 25px rgba(0,0,0,.9);
+box-shadow:0 0 25px rgba(0,0,0,.9);  
 
-    transition:.3s;
+transition:.3s;  
 
-    animation:pageShow .8s ease;
+animation:pageShow .8s ease;
 
 }
-
-
 
 .pages img:hover {
 
+transform:  
 
-    transform:
-
-    scale(1.02);
-
-
-    box-shadow:
+scale(1.02);  
 
 
-    0 0 45px rgba(255,208,0,.4);
+box-shadow:  
+
+
+0 0 45px rgba(255,208,0,.4);
 
 }
 
-
-
 /* =========================
- SEARCH
+SEARCH
 ========================= */
-
 
 .search-box {
 
+text-align:center;  
 
-    text-align:center;
+margin:  
 
-    margin:
-
-    40px auto;
-
+40px auto;
 
 }
-
-
 
 .search-box input {
 
+width:  
 
-    width:
-
-    min(90%,500px);
-
-
-    padding:
-
-    16px 25px;
+min(90%,500px);  
 
 
-    background:
+padding:  
 
-    rgba(0,0,0,.8);
-
-
-    border:
-
-    2px solid var(--gold);
+16px 25px;  
 
 
-    border-radius:
+background:  
 
-    50px;
-
-
-    color:white;
+rgba(0,0,0,.8);  
 
 
-    font-size:18px;
+border:  
+
+2px solid var(--gold);  
 
 
-    outline:none;
+border-radius:  
+
+50px;  
 
 
-    transition:.4s;
+color:white;  
 
+
+font-size:18px;  
+
+
+outline:none;  
+
+
+transition:.4s;
 
 }
-
-
 
 .search-box input:focus {
 
+box-shadow:  
 
-    box-shadow:
-
-    0 0 30px rgba(255,208,0,.5);
+0 0 30px rgba(255,208,0,.5);  
 
 
-    transform:
+transform:  
 
-    scale(1.03);
+scale(1.03);
 
 }
 
-
-
 /* =========================
- FOOTER
+FOOTER
 ========================= */
-
 
 .footer {
 
-
-    text-align:center;
-
-
-    padding:
-
-    40px 20px;
+text-align:center;  
 
 
-    margin-top:70px;
+padding:  
+
+40px 20px;  
 
 
-    background:
-
-    rgba(0,0,0,.7);
+margin-top:70px;  
 
 
-    border-top:
+background:  
 
-    2px solid rgba(255,208,0,.5);
+rgba(0,0,0,.7);  
 
 
-    color:#ddd;
+border-top:  
 
+2px solid rgba(255,208,0,.5);  
+
+
+color:#ddd;
 
 }
-
-
 
 .telegram-link img {
 
+width:45px;  
 
-    width:45px;
-
-    margin-top:15px;
-
-
-    transition:.4s;
+margin-top:15px;  
 
 
-    filter:
+transition:.4s;  
 
-    drop-shadow(0 0 10px var(--gold));
 
+filter:  
+
+drop-shadow(0 0 10px var(--gold));
 
 }
-
-
 
 .telegram-link img:hover {
 
+transform:  
 
-    transform:
-
-    scale(1.2)
-    rotate(10deg);
-
+scale(1.2)  
+rotate(10deg);
 
 }
 
-
-
 /* =========================
- MOBILE
+MOBILE
 ========================= */
-
 
 .menu-btn {
 
-
-    display:none;
-
-
-    font-size:35px;
+display:none;  
 
 
-    color:var(--gold);
+font-size:35px;  
 
 
-    cursor:pointer;
+color:var(--gold);  
 
+
+cursor:pointer;
 
 }
-
-
 
 @media(max-width:768px){
 
-
-
 header {
 
-    padding:12px;
+padding:12px;
 
 }
-
-
 
 .logo img {
 
-    width:130px;
+width:130px;
 
 }
-
-
 
 .menu-btn {
 
-    display:block;
+display:block;
 
 }
-
-
 
 nav {
 
-
-    display:none;
-
-
-    position:absolute;
+display:none;  
 
 
-    top:90px;
-
-    right:15px;
+position:absolute;  
 
 
-    width:220px;
+top:90px;  
+
+right:15px;  
 
 
-    padding:20px;
+width:220px;  
 
 
-    background:#111;
+padding:20px;  
 
 
-    border:
-
-    1px solid var(--gold);
+background:#111;  
 
 
-    border-radius:20px;
+border:  
 
+1px solid var(--gold);  
+
+
+border-radius:20px;
 
 }
-
-
 
 nav a {
 
+display:block;  
 
-    display:block;
 
-
-    margin:15px;
-
+margin:15px;
 
 }
-
-
 
 nav.show {
 
-    display:block;
+display:block;
 
 }
-
-
 
 .hero {
 
-    padding-top:160px;
+padding-top:160px;
 
 }
-
-
 
 .comics {
 
+grid-template-columns:  
 
-    grid-template-columns:
-
-    repeat(
-    2,
-    1fr
-    );
-
-
-    gap:15px;
+repeat(  
+2,  
+1fr  
+);  
 
 
-    padding:15px;
+gap:15px;  
 
+
+padding:15px;
 
 }
-
-
 
 .card {
 
-    border-radius:18px;
+border-radius:18px;  
 
-    padding:10px;
+padding:10px;
 
 }
-
-
 
 .cover {
 
-    height:240px;
+height:240px;
 
 }
-
-
 
 .card h3 {
 
-
-    font-size:16px;
+font-size:16px;
 
 }
-
-
 
 .comic-page {
 
-
-    padding:15px;
+padding:15px;
 
 }
-
-
 
 .comic-page .cover {
 
-
-    height:400px;
+height:400px;
 
 }
-
-
 
 .comic-page h1 {
 
-
-    font-size:32px;
+font-size:32px;
 
 }
-
-
 
 .chapter {
 
+flex-direction:column;  
 
-    flex-direction:column;
-
-    gap:15px;
-
-}
-
-
+gap:15px;
 
 }
 
-
+}
 
 /* =========================
- ANIMATIONS
+ANIMATIONS
 ========================= */
-
 
 @keyframes fadeUp {
 
-
 from {
 
-    opacity:0;
+opacity:0;  
 
-    transform:
+transform:  
 
-    translateY(40px);
+translateY(40px);
 
 }
-
 
 to {
 
-    opacity:1;
+opacity:1;  
 
-    transform:
+transform:  
 
-    translateY(0);
-
-}
-
+translateY(0);
 
 }
 
-
+}
 
 @keyframes pageShow {
 
-
 from {
 
-    opacity:0;
+opacity:0;  
 
-    transform:
+transform:  
 
-    translateY(50px);
+translateY(50px);
 
 }
-
 
 to {
 
-    opacity:1;
+opacity:1;  
 
-    transform:
+transform:  
 
-    translateY(0);
+translateY(0);
 
 }
-
 
 }
