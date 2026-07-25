@@ -463,7 +463,89 @@ alert("تمت إضافة العدد بنجاح 🎉");
 
 async function deleteComic(){
 
-alert("سيتم تفعيل الحذف الكامل في التحديث القادم.");
+const token = localStorage.getItem("sambox_token");
+
+if(!token){
+alert("أدخل التوكن أولاً");
+return;
+}
+
+const folder = document.getElementById("deleteComic").value.trim();
+
+if(!folder){
+alert("أدخل اسم مجلد الكوميكس");
+return;
+}
+
+if(!confirm(`هل تريد حذف "${folder}"؟`)){
+return;
+}
+
+// حذف جميع الملفات داخل مجلد الكوميكس
+async function deleteFolder(path){
+
+const res = await fetch(
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`,
+{
+headers:{
+Authorization:"token "+token
+}
+}
+);
+
+if(!res.ok) return;
+
+const items = await res.json();
+
+for(const item of items){
+
+if(item.type==="dir"){
+
+await deleteFolder(item.path);
+
+}else{
+
+await deleteFile(
+item.path,
+item.sha,
+token,
+`Delete ${item.path}`
+);
+
+}
+
+}
+
+}
+
+await deleteFolder(`comics/${folder}`);
+
+// تحديث list.json
+const listFile = await getFile("comics/list.json",token);
+
+if(listFile){
+
+let list = JSON.parse(
+decode(
+listFile.content.replace(/\n/g,"")
+)
+);
+
+list = list.filter(name => name !== folder);
+
+await uploadFile(
+"comics/list.json",
+encode(JSON.stringify(list,null,2)),
+token,
+"Update comics list",
+listFile.sha
+);
+
+}
+
+alert("تم حذف الكوميكس بنجاح 🎉");
+
+}
 
     }</script>
 
