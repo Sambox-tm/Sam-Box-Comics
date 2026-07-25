@@ -245,7 +245,26 @@ body:JSON.stringify(body)
 );
 
 }
+async function deleteFile(path, sha, token, message){
 
+return fetch(
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`,
+{
+method:"DELETE",
+
+headers:{
+Authorization:"token "+token,
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+message:message,
+sha:sha
+})
+}
+);
+
+}
 async function getFile(path,token){
 
 const res=await fetch(
@@ -547,7 +566,8 @@ alert("تم حذف الكوميكس بنجاح 🎉");
 
 }
 
-    }</script>
+    
+     </script>
 
 </body>
 
