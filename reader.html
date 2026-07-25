@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 .reader-card{
     width:800px;
     max-width:95%;
     margin:auto;
     padding:25px;
 }
+
 .reader-buttons{
     display:flex;
     justify-content:center;
@@ -20,92 +22,90 @@
     flex-wrap:wrap;
     margin-top:30px;
 }
+
 .reader-buttons a{
     text-decoration:none;
 }
+
 .reader-error{
     text-align:center;
     padding:40px 20px;
 }
+
 .reader-error h1{
     color:#ffd000;
     margin-bottom:20px;
 }
-    .reader-controls{
 
-display:flex;
 
-justify-content:center;
+.reader-controls{
 
-align-items:center;
+    display:flex;
 
-gap:20px;
+    justify-content:center;
 
-flex-wrap:wrap;
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
 
 .issues-button{
 
-width:auto;
+    width:auto;
 
-padding:10px 25px;
+    padding:10px 25px;
 
-font-size:16px;
+    font-size:16px;
 
-margin:0;
+    margin:0;
 
 }
 
 
 .issues-menu{
 
-display:none;
+    display:none;
 
-margin:15px auto;
+    margin:15px auto;
 
-background:#111;
+    background:#111;
 
-border:2px solid #ffd000;
+    border:2px solid #ffd000;
 
-border-radius:15px;
+    border-radius:15px;
 
-padding:15px;
+    padding:15px;
 
-width:220px;
-
-}
-
-
-.issues-menu a{
-
-display:block;
-
-color:white;
-
-text-decoration:none;
-
-padding:10px;
-
-border-bottom:1px solid #333;
+    width:220px;
 
 }
 
 
 .issues-menu a{
 
-display:block;
-color:white;
-text-decoration:none;
-padding:10px;
-border-bottom:1px solid #333;
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px;
+
+    border-bottom:1px solid #333;
 
 }
 
 
 .issues-menu a:hover{
 
-color:#ffd000;
+    color:#ffd000;
 
 }
+
 </style>
 </head>
 
@@ -136,18 +136,14 @@ color:#ffd000;
 <div class="reader-controls">
 
 <h2 id="issueTitle" style="color:#ddd;"></h2>
+
 <button id="issuesButton" class="issues-button">
 📚 الأعداد
 </button>
 
 <div id="issuesMenu" class="issues-menu"></div>
-<button id="issuesButton" class="header-issues">
- الأعداد
-</button>
 
 </div>
-
-<div id="issuesMenu" class="issues-menu"></div>
 
     </div>
 
