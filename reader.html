@@ -31,15 +31,30 @@
     color:#ffd000;
     margin-bottom:20px;
 }
-    .issues-button{
+    .reader-controls{
 
-position:fixed;
-top:120px;
-right:20px;
-z-index:999;
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+
+.issues-button{
+
 width:auto;
-padding:12px 25px;
+
+padding:10px 25px;
+
 font-size:16px;
+
+margin:0;
 
 }
 
@@ -47,15 +62,33 @@ font-size:16px;
 .issues-menu{
 
 display:none;
-position:fixed;
-top:180px;
-right:20px;
-z-index:999;
+
+margin:15px auto;
+
 background:#111;
+
 border:2px solid #ffd000;
+
 border-radius:15px;
+
 padding:15px;
+
 width:220px;
+
+}
+
+
+.issues-menu a{
+
+display:block;
+
+color:white;
+
+text-decoration:none;
+
+padding:10px;
+
+border-bottom:1px solid #333;
 
 }
 
@@ -96,15 +129,23 @@ color:#ffd000;
 </header>
 
 <section class="reader">
-    <div class="card reader-card">
-        <h1 id="comicTitle" style="color:#ffd000;"></h1>
-        <h2 id="issueTitle" style="color:#ddd;"></h2>
+    <div class="reader-top">
+
+<h1 id="comicTitle" style="color:#ffd000;"></h1>
+
+<div class="reader-controls">
+
+<h2 id="issueTitle" style="color:#ddd;"></h2>
 
 <button id="issuesButton" class="issues-button">
 📚 الأعداد
 </button>
 
+</div>
+
 <div id="issuesMenu" class="issues-menu"></div>
+
+    </div>
 
 <div class="pages" id="pages"></div>
 
