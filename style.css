@@ -659,11 +659,9 @@ button:hover {
 
 .reader {
 
+    background:#000;
 
-    padding:
-
-    150px 20px 70px;
-
+    padding:140px 5px 50px;
 
     text-align:center;
 
@@ -690,14 +688,15 @@ button:hover {
 
 .pages {
 
-
     display:flex;
 
     flex-direction:column;
 
     align-items:center;
 
-    gap:35px;
+    gap:20px;
+
+    width:100%;
 
 }
 
@@ -705,33 +704,23 @@ button:hover {
 
 .pages img {
 
+    display:block;
 
-    width:
+    width:100%;
 
-    min(95%,900px);
+    max-width:1200px;
 
+    height:auto;
 
-    border-radius:18px;
+    border-radius:5px;
 
+    border:none;
 
-    border:
+    box-shadow:0 0 25px rgba(0,0,0,.9);
 
-    1px solid rgba(255,208,0,.35);
+    transition:.3s;
 
-
-    box-shadow:
-
-
-    0 0 35px rgba(0,0,0,.8);
-
-
-    transition:.5s;
-
-
-    animation:
-
-    pageShow .8s ease;
-
+    animation:pageShow .8s ease;
 
 }
 
