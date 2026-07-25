@@ -11,207 +11,169 @@
 <style>
 
 body{
-    background:#050505;
-    color:white;
-    font-family:Arial,sans-serif;
-    padding:30px;
+background:#050505;
+color:white;
+font-family:Arial,sans-serif;
+padding:30px;
 }
 
 .box{
-    max-width:700px;
-    margin:auto;
-    background:#111;
-    padding:30px;
-    border-radius:20px;
-    border:2px solid #ffd000;
+max-width:700px;
+margin:auto;
+background:#111;
+padding:30px;
+border-radius:20px;
+border:2px solid #ffd000;
 }
 
 h1,h2{
-    text-align:center;
-    color:#ffd000;
+text-align:center;
+color:#ffd000;
 }
 
 hr{
-    border:1px solid #ffd000;
-    margin:30px 0;
+border:1px solid #ffd000;
+margin:30px 0;
 }
 
 input,textarea,select{
 
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    background:#222;
-    color:white;
-    border:1px solid #ffd000;
-    border-radius:10px;
+width:100%;
+padding:15px;
+margin:10px 0;
+background:#222;
+color:white;
+border:1px solid #ffd000;
+border-radius:10px;
 
 }
-
 
 button{
 
-    width:100%;
-    padding:18px;
-    margin-top:20px;
-    background:#ffd000;
-    color:black;
-    border:none;
-    border-radius:30px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:18px;
+margin-top:20px;
+background:#ffd000;
+color:black;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
 
 }
 
-
 label{
 
-    display:block;
-    margin-top:15px;
-    color:#ffd000;
+display:block;
+margin-top:15px;
+color:#ffd000;
 
 }
 
 .issue-box{
 
-    background:#181818;
-    padding:15px;
-    border-radius:15px;
-    margin-top:15px;
-    border:1px solid #333;
+background:#181818;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+border:1px solid #333;
 
 }
-
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div class="box">
 
-
 <h1>لوحة إدارة SamBox</h1>
 
-
 <input id="token" type="password" placeholder="GitHub Token">
-
 
 <button onclick="saveToken()">
 حفظ التوكن
 </button>
 
-
-
 <hr>
-
 
 <h2>إنشاء كوميكس جديد</h2>
 
-
-
 <input id="title" placeholder="اسم الكوميكس">
-
 
 <textarea id="description" placeholder="وصف الكوميكس"></textarea>
 
-
-
 <select id="status">
-
 <option>قيد الترجمة</option>
-
 <option>مكتمل</option>
-
 <option>متوقف</option>
-
 </select>
 
-
-
-<label>
-صورة الغلاف:
-</label>
-
+<label>صورة الغلاف:</label>
 
 <input id="cover" type="file" accept="image/*">
 
+<label>عدد الأعداد:</label>
 
-
-<label>
-عدد الأعداد:
-</label>
-
-
-<input id="issues" type="number" placeholder="مثال: 6">
-
-
+<input id="issues" type="number">
 
 <button onclick="generateIssues()">
 تجهيز الأعداد
 </button>
 
-
 <div id="issuesBox"></div>
-
-
 
 <button onclick="createComic()">
 إنشاء الكوميكس
 </button>
 
-
-
-
 <hr>
 
-
-
-<h2>
-إضافة عدد جديد لكوميكس موجود
-</h2>
-
-
+<h2>إضافة عدد جديد</h2>
 
 <input id="existingComic" placeholder="اسم مجلد الكوميكس">
 
-
 <input id="issueNumber" type="number" placeholder="رقم العدد">
 
+<label>صفحات العدد:</label>
 
-
-<label>
-صفحات العدد:
-</label>
-
-
-<input id="newIssuePages" type="file" accept="image/*" multiple>
-
-
+<input
+id="newIssuePages"
+type="file"
+accept="image/*"
+multiple>
 
 <button onclick="addIssue()">
 إضافة العدد
 </button>
 
+<hr>
+
+<h2>حذف كوميكس</h2>
+
+<input
+id="deleteComic"
+placeholder="اسم مجلد الكوميكس">
+
+<button onclick="deleteComic()">
+حذف الكوميكس
+</button>
 
 </div>
+
 <script>
 
-function saveToken(){
+    function saveToken(){
 
-let token = document.getElementById("token").value;
+const token=document.getElementById("token").value;
 
 localStorage.setItem("sambox_token",token);
 
 alert("تم حفظ التوكن");
 
 }
-
-
 
 function encode(data){
 
@@ -223,13 +185,21 @@ encodeURIComponent(data)
 
 }
 
+function decode(data){
 
+return decodeURIComponent(
+escape(
+atob(data)
+)
+);
+
+}
 
 async function fileToBase64(file){
 
 return new Promise(resolve=>{
 
-let reader = new FileReader();
+const reader=new FileReader();
 
 reader.onload=()=>{
 
@@ -245,70 +215,74 @@ reader.readAsDataURL(file);
 
 }
 
+async function uploadFile(path,content,token,message,sha=null){
 
+const body={
+message:message,
+content:content
+};
 
+if(sha){
+body.sha=sha;
+}
 
-async function uploadFile(path,content,token,message){
+return fetch(
 
-const url =
-`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`;
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`,
 
-
-return fetch(url,{
-
+{
 method:"PUT",
 
 headers:{
-
-"Authorization":"token "+token,
-
+Authorization:"token "+token,
 "Content-Type":"application/json"
-
 },
 
-body:JSON.stringify({
-
-message:message,
-
-content:content
-
-})
-
-});
-
+body:JSON.stringify(body)
 
 }
 
+);
 
+}
 
+async function getFile(path,token){
 
+const res=await fetch(
+
+`https://api.github.com/repos/Sambox-tm/Sam-Box-Comics/contents/${path}`,
+
+{
+headers:{
+Authorization:"token "+token
+}
+}
+
+);
+
+if(!res.ok) return null;
+
+return await res.json();
+
+}
 
 function generateIssues(){
 
-let count =
-document.getElementById("issues").value;
+const count=document.getElementById("issues").value;
 
-
-let box =
-document.getElementById("issuesBox");
-
+const box=document.getElementById("issuesBox");
 
 box.innerHTML="";
 
-
-
 for(let i=1;i<=count;i++){
 
-
-box.innerHTML += `
+box.innerHTML+=`
 
 <div class="issue-box">
 
-<label>
-صفحات العدد ${i}:
-</label>
+<label>صفحات العدد ${i}</label>
 
-<input 
+<input
 type="file"
 id="issue-${i}"
 accept="image/*"
@@ -318,240 +292,138 @@ multiple>
 
 `;
 
+}
 
 }
 
+    async function createComic(){
 
-}
-
-
-
-
-
-
-async function createComic(){
-
-
-const token =
-localStorage.getItem("sambox_token");
-
-
+const token=localStorage.getItem("sambox_token");
 
 if(!token){
-
 alert("أدخل التوكن أولاً");
-
 return;
-
 }
 
+const title=document.getElementById("title").value.trim();
+const description=document.getElementById("description").value;
+const status=document.getElementById("status").value;
+const cover=document.getElementById("cover").files[0];
+const issueCount=parseInt(document.getElementById("issues").value);
 
-
-
-const title =
-document.getElementById("title").value;
-
-
-const description =
-document.getElementById("description").value;
-
-
-const status =
-document.getElementById("status").value;
-
-
-const cover =
-document.getElementById("cover").files[0];
-
-
-const issueCount =
-document.getElementById("issues").value;
-
-
-
-if(!title || !cover || !issueCount){
-
+if(!title||!cover||!issueCount){
 alert("أكمل بيانات الكوميكس");
-
 return;
-
 }
 
-
-
-const folder =
-title.trim().replace(/\s+/g,"-");
-
-
-
-
+const folder=title.replace(/\s+/g,"-");
 
 const info={
-
 title:title,
-
 description:description,
-
 status:status,
-
 issues:issueCount
-
 };
 
-
-
-
-let infoUpload =
 await uploadFile(
-
 `comics/${folder}/info.json`,
-
-encode(
-JSON.stringify(info,null,2)
-),
-
+encode(JSON.stringify(info,null,2)),
 token,
-
 "Add comic info"
-
 );
-
-
-
-if(!infoUpload.ok){
-
-alert("خطأ في إنشاء معلومات الكوميكس");
-
-return;
-
-}
-
-
-
 
 await uploadFile(
-
 `comics/${folder}/cover.jpg`,
-
 await fileToBase64(cover),
-
 token,
-
 "Add cover"
-
 );
-
-
-
-
-
 
 for(let i=1;i<=issueCount;i++){
 
-
-
-let pages =
-[
+const files=[
 ...document.getElementById(`issue-${i}`).files
 ];
 
-
-
-for(let x=0;x<pages.length;x++){
-
+for(let p=0;p<files.length;p++){
 
 await uploadFile(
-
-`comics/${folder}/issue-${i}/page-${x+1}.jpg`,
-
-await fileToBase64(pages[x]),
-
+`comics/${folder}/issue-${i}/page-${p+1}.jpg`,
+await fileToBase64(files[p]),
 token,
-
-`Add issue ${i} page ${x+1}`
-
+`Add issue ${i} page ${p+1}`
 );
+
+}
 
 await uploadFile(
-    `comics/${folder}/issue-${i}/pages.json`,
-    encode(JSON.stringify({
-        pages: pages.length
-    }, null, 2)),
-    token,
-    `Add pages.json for issue ${i}`
+`comics/${folder}/issue-${i}/pages.json`,
+encode(JSON.stringify({
+pages:files.length
+},null,2)),
+token,
+`Add issue ${i} pages`
 );
-}
-
-
 
 }
 
+/* تحديث list.json */
 
+const listFile=await getFile("comics/list.json",token);
 
-alert("تم إنشاء الكوميكس بكل أعداده 🎉");
+let list=[];
 
+let sha=null;
 
+if(listFile){
+
+sha=listFile.sha;
+
+list=JSON.parse(
+decode(
+listFile.content.replace(/\n/g,"")
+)
+);
 
 }
 
+if(!list.includes(folder)){
+list.push(folder);
+}
 
+await uploadFile(
+"comics/list.json",
+encode(JSON.stringify(list,null,2)),
+token,
+"Update comics list",
+sha
+);
 
+alert("تم إنشاء الكوميكس بنجاح 🎉");
 
+    }async function addIssue(){
 
-
-
-
-async function addIssue(){
-
-
-
-const token =
-localStorage.getItem("sambox_token");
-
-
+const token=localStorage.getItem("sambox_token");
 
 if(!token){
-
 alert("أدخل التوكن أولاً");
-
 return;
-
 }
 
+const comic=document.getElementById("existingComic").value.trim();
 
+const issue=document.getElementById("issueNumber").value;
 
-
-const comic =
-document.getElementById("existingComic").value;
-
-
-
-const issue =
-document.getElementById("issueNumber").value;
-
-
-
-const pages =
-[
+const pages=[
 ...document.getElementById("newIssuePages").files
 ];
 
-
-
-if(!comic || !issue || pages.length===0){
-
+if(!comic||!issue||pages.length===0){
 alert("أدخل اسم الكوميكس ورقم العدد والصفحات");
-
 return;
-
 }
 
-
-
-
 for(let i=0;i<pages.length;i++){
-
-
 
 await uploadFile(
 
@@ -565,30 +437,32 @@ token,
 
 );
 
-
 }
-const pagesInfo = {
-    pages: pages.length
-};
 
 await uploadFile(
-    `comics/${comic}/issue-${issue}/pages.json`,
-    encode(JSON.stringify(pagesInfo, null, 2)),
-    token,
-    `Add pages.json for issue ${issue}`
-);
 
+`comics/${comic}/issue-${issue}/pages.json`,
+
+encode(JSON.stringify({
+pages:pages.length
+},null,2)),
+
+token,
+
+`Add issue ${issue} pages`
+
+);
 
 alert("تمت إضافة العدد بنجاح 🎉");
 
-
-
 }
 
+async function deleteComic(){
 
-</script>
+alert("سيتم تفعيل الحذف الكامل في التحديث القادم.");
 
+    }</script>
 
 </body>
 
-    </html>
+</html>
