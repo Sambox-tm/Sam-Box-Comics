@@ -72,9 +72,11 @@ header {
     display:flex;
     justify-content:space-between;
     align-items:center;
-
 }
 
+.top-bar{
+    height:70px;
+}
 
 .logo img {
 
