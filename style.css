@@ -816,34 +816,33 @@ display:block;
 
 }
 
-nav {
+    nav {
 
-display:none;  
+display:block;
 
+position:absolute;
 
-position:absolute;  
+top:90px;
 
+right:20px;
 
-top:90px;  
+width:220px;
 
-right:15px;  
+padding:20px;
 
+background:#111;
 
-width:220px;  
-
-
-padding:20px;  
-
-
-background:#111;  
-
-
-border:  
-
-1px solid var(--gold);  
-
+border:1px solid var(--gold);
 
 border-radius:20px;
+
+opacity:0;
+
+transform:translateY(-15px) scale(.95);
+
+pointer-events:none;
+
+transition:.35s ease;
 
 }
 
@@ -858,7 +857,11 @@ margin:15px;
 
 nav.show {
 
-display:block;
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+pointer-events:auto;
 
 }
 
