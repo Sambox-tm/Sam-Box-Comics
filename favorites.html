@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>المفضلة | SamBox</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="top-bar">
+
+<div class="logo">
+<img src="images/sambox-logo.png" alt="SamBox">
+</div>
+
+<div class="menu-btn">☰</div>
+
+</div>
+
+<nav>
+
+<a href="index.html">الرئيسية</a>
+
+<a href="comics.html">جميع الكوميكس</a>
+
+<a href="favorites.html">المفضلة 💛</a>
+
+<a href="contact.html">تواصل معنا</a>
+
+</nav>
+
+</header>
+
+<section class="popular">
+
+<h2>💛 الكوميكس المفضلة</h2>
+
+<div class="comics" id="favoritesList">
+
+<p>لا توجد كوميكس في المفضلة بعد.</p>
+
+</div>
+
+</section>
+
+<script>
+
+const menu=document.querySelector(".menu-btn");
+const nav=document.querySelector("nav");
+
+menu.onclick=()=>{
+nav.classList.toggle("show");
+};
+
+// سنضيف كود عرض المفضلة هنا في الخطوة التالية
+
+</script>
+
+</body>
+
+</html>
