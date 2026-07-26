@@ -513,13 +513,15 @@ infoFile.sha
 
 alert("تمت إضافة العدد بنجاح 🎉");
 
+} // إغلاق addIssue
+
 async function deleteComic(){
 
 const token = localStorage.getItem("sambox_token");
 
 if(!token){
-alert("أدخل التوكن أولاً");
-return;
+    alert("أدخل التوكن أولاً");
+    return;
 }
 
 const folder = document.getElementById("deleteComic").value.trim();
