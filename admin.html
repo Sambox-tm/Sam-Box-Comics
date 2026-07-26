@@ -477,9 +477,41 @@ token,
 
 );
 
-alert("تمت إضافة العدد بنجاح 🎉");
+// تحديث عدد الأعداد داخل info.json
+
+const infoFile = await getFile(`comics/${comic}/info.json`, token);
+
+if(infoFile){
+
+let info = JSON.parse(
+decode(
+infoFile.content.replace(/\n/g,"")
+)
+);
+
+if(Number(issue) > Number(info.issues)){
+
+info.issues = Number(issue);
+
+await uploadFile(
+
+`comics/${comic}/info.json`,
+
+encode(JSON.stringify(info,null,2)),
+
+token,
+
+"Update issues count",
+
+infoFile.sha
+
+);
 
 }
+
+}
+
+alert("تمت إضافة العدد بنجاح 🎉");
 
 async function deleteComic(){
 
