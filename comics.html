@@ -183,6 +183,36 @@ console.log(e);
 
 })();
 </script>
+
+    <script>
+
+function shareSite(){
+
+const url = "https://sambox-tm.github.io/Sam-Box-Comics/";
+
+if(navigator.share){
+
+navigator.share({
+
+title:"SamBox Comics",
+
+text:"اقرأ أفضل الكوميكس المترجمة من SamBox 🔥",
+
+url:url
+
+});
+
+}else{
+
+navigator.clipboard.writeText(url);
+
+alert("تم نسخ رابط الموقع");
+
+}
+
+}
+
+    </script>
 </body>
 
 </html>
