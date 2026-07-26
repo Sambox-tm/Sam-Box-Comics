@@ -164,10 +164,10 @@ favoriteBtn.addEventListener("click",()=>{
     if(index === -1){
 
         favorites.push({
-            title: comicTitle,
-            cover: document.querySelector(".cover").src
-        });
-
+    title: document.getElementById("title").textContent,
+    folder: comic,
+    cover: document.getElementById("cover").src
+});
     }else{
 
         favorites.splice(index,1);
