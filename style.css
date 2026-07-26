@@ -1063,3 +1063,22 @@ z-index:5;
 filter:drop-shadow(0 0 8px #ffd000);
 
 }
+.cover{
+position:relative;
+}
+
+.favorite-mark{
+
+position:absolute;
+
+top:10px;
+
+right:10px;
+
+font-size:25px;
+
+z-index:5;
+
+filter:drop-shadow(0 0 8px #ffd000);
+
+}
