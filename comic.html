@@ -127,7 +127,63 @@ const nav=document.querySelector("nav");
 menu.onclick=()=>nav.classList.toggle("show");
 
 </script>
+<script>
 
+const favoriteBtn = document.getElementById("favoriteBtn");
+
+const comicTitle = document.querySelector("h1").textContent;
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+function updateFavorite(){
+
+    const exists = favorites.some(comic => comic.title === comicTitle);
+
+    if(exists){
+
+        favoriteBtn.classList.add("saved");
+        favoriteBtn.querySelector("span").textContent = "إزالة من المفضلة";
+
+    }else{
+
+        favoriteBtn.classList.remove("saved");
+        favoriteBtn.querySelector("span").textContent = "إضافة إلى المفضلة";
+
+    }
+
+}
+
+
+favoriteBtn.addEventListener("click",()=>{
+
+    const index = favorites.findIndex(comic => comic.title === comicTitle);
+
+
+    if(index === -1){
+
+        favorites.push({
+            title: comicTitle,
+            cover: document.querySelector(".cover").src
+        });
+
+    }else{
+
+        favorites.splice(index,1);
+
+    }
+
+
+    localStorage.setItem("favorites",JSON.stringify(favorites));
+
+    updateFavorite();
+
+});
+
+
+updateFavorite();
+
+
+</script>
 </body>
 
 </html>
