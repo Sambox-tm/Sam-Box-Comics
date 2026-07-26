@@ -343,21 +343,22 @@ description:description,
 status:status,
 issues:issueCount
 };
-
+alert("سيتم رفع info.json");
 await uploadFile(
 `comics/${folder}/info.json`,
 encode(JSON.stringify(info,null,2)),
 token,
 "Add comic info"
 );
-
+alert("تم رفع info.json");
+alert("سيتم رفع الغلاف");
 await uploadFile(
 `comics/${folder}/cover.jpg`,
 await fileToBase64(cover),
 token,
 "Add cover"
 );
-
+alert("تم رفع الغلاف");
 for(let i=1;i<=issueCount;i++){
 
 const files=[
