@@ -1082,3 +1082,16 @@ z-index:5;
 filter:drop-shadow(0 0 8px #ffd000);
 
 }
+.share-icon{
+
+width:14px;
+
+height:14px;
+
+fill:#ffd000;
+
+vertical-align:middle;
+
+margin-left:5px;
+
+}
