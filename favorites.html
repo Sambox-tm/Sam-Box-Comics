@@ -17,48 +17,115 @@
 
 
 <header>
-    <h2>💛 المفضلة</h2>
+
+<div class="top-bar">
+
+<div class="logo">
+<img src="images/sambox-logo.png" alt="SamBox">
+</div>
+
+<div class="menu-btn">
+☰
+</div>
+
+</div>
+
+
+<nav>
+
+<a href="index.html">الرئيسية</a>
+
+<a href="comics.html">جميع الكوميكس</a>
+
+<a href="comics.html#search">🔎 البحث</a>
+
+<a href="favorites.html">💛 المفضلة</a>
+
+<a href="contact.html">تواصل معنا</a>
+
+</nav>
+
 </header>
 
 
-<main>
 
-<div id="favoritesContainer" class="comics-grid"></div>
+<section class="popular">
 
-</main>
+<h2>
+💛 الكوميكس المفضلة
+</h2>
+
+
+<div class="comics" id="favoritesList">
+
+
+</div>
+
+
+</section>
 
 
 
 <script>
 
+
+const menu=document.querySelector(".menu-btn");
+const nav=document.querySelector("nav");
+
+menu.onclick=()=>nav.classList.toggle("show");
+
+
+
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-const container = document.getElementById("favoritesContainer");
+const container = document.getElementById("favoritesList");
 
 
 if(favorites.length === 0){
 
-    container.innerHTML = "<h2>لا توجد كوميكس في المفضلة</h2>";
+container.innerHTML = `
+<h2 style="color:white;">
+لا توجد كوميكس في المفضلة
+</h2>
+`;
 
 }else{
 
 
-favorites.forEach(comic => {
+favorites.forEach(comic=>{
 
 
 container.innerHTML += `
 
-<div class="comic-card">
+<a href="comic.html?comic=${encodeURIComponent(comic.title)}" class="comic-link">
 
-<img src="${comic.cover}" class="cover">
 
-<h3>${comic.title}</h3>
+<div class="card">
 
-<a href="comic.html?comic=${comic.title}">
-فتح الكوميك
-</a>
+
+<div class="cover">
+
+
+<img src="${comic.cover}" alt="${comic.title}">
+
+
+<div class="favorite-mark">
+💛
+</div>
+
 
 </div>
+
+
+<h3>
+${comic.title}
+</h3>
+
+
+</div>
+
+
+</a>
 
 `;
 
@@ -70,6 +137,7 @@ container.innerHTML += `
 
 
 </script>
+
 
 
 </body>
