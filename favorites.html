@@ -6,64 +6,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>المفضلة | SamBox</title>
+<title>المفضلة - SamBox</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
+
 <body>
 
+
 <header>
-
-<div class="top-bar">
-
-<div class="logo">
-<img src="images/sambox-logo.png" alt="SamBox">
-</div>
-
-<div class="menu-btn">☰</div>
-
-</div>
-
-<nav>
-
-<a href="index.html">الرئيسية</a>
-
-<a href="comics.html">جميع الكوميكس</a>
-
-<a href="favorites.html">المفضلة 💛</a>
-
-<a href="contact.html">تواصل معنا</a>
-
-</nav>
-
+    <h2>💛 المفضلة</h2>
 </header>
 
-<section class="popular">
 
-<h2>💛 الكوميكس المفضلة</h2>
+<main>
 
-<div class="comics" id="favoritesList">
+<div id="favoritesContainer" class="comics-grid"></div>
 
-<p>لا توجد كوميكس في المفضلة بعد.</p>
+</main>
 
-</div>
 
-</section>
 
 <script>
 
-const menu=document.querySelector(".menu-btn");
-const nav=document.querySelector("nav");
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-menu.onclick=()=>{
-nav.classList.toggle("show");
-};
+const container = document.getElementById("favoritesContainer");
 
-// سنضيف كود عرض المفضلة هنا في الخطوة التالية
+
+if(favorites.length === 0){
+
+    container.innerHTML = "<h2>لا توجد كوميكس في المفضلة</h2>";
+
+}else{
+
+
+favorites.forEach(comic => {
+
+
+container.innerHTML += `
+
+<div class="comic-card">
+
+<img src="${comic.cover}" class="cover">
+
+<h3>${comic.title}</h3>
+
+<a href="comic.html?comic=${comic.title}">
+فتح الكوميك
+</a>
+
+</div>
+
+`;
+
+
+});
+
+
+}
+
 
 </script>
+
 
 </body>
 
