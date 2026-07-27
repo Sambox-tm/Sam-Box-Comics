@@ -1189,8 +1189,8 @@ margin-bottom:12px;
 
     position:fixed;
 
-    top:120px;
-    left:25px;
+    top:170px;
+left:25px;
 
     width:55px;
     height:55px;
@@ -1244,4 +1244,8 @@ margin-bottom:12px;
 
     color:#050505;
 
+}
+.floating-download{
+    opacity:1 !important;
+    visibility:visible !important;
 }
