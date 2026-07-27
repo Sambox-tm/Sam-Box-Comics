@@ -1168,3 +1168,20 @@ margin-top:35px;
 margin-bottom:20px;
 
 }
+.privacy-page ul{
+
+max-width:800px;
+
+margin:20px auto;
+
+text-align:right;
+
+line-height:2;
+
+}
+
+.privacy-page li{
+
+margin-bottom:12px;
+
+}
