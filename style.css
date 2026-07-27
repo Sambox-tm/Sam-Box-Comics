@@ -1189,8 +1189,10 @@ margin-bottom:12px;
 
     position:fixed;
 
-    top:170px;
-left:25px;
+    top:50%;
+    right:25px;
+    left:auto;
+   transform:translateY(-50%);
 
     width:55px;
     height:55px;
