@@ -1123,3 +1123,48 @@ text-decoration:underline;
 color:#ffe875;
 
 }
+/* =========================
+PRIVACY PAGE
+========================= */
+
+.privacy-page{
+
+max-width:900px;
+
+margin:150px auto 60px;
+
+padding:20px;
+
+color:#fff;
+
+line-height:2.2;
+
+font-size:18px;
+
+text-align:center;
+
+}
+
+.privacy-page h1{
+
+color:#ffd000;
+
+margin-bottom:40px;
+
+font-size:40px;
+
+}
+
+.privacy-page h2{
+
+color:#ffd000;
+
+margin-top:35px;
+
+}
+
+.privacy-page p{
+
+margin-bottom:20px;
+
+}
