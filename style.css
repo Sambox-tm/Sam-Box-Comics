@@ -1080,7 +1080,8 @@ font-size:25px;
 z-index:5;
 
 filter:drop-shadow(0 0 8px #ffd000);
-
+}
+    
 .share-icon{
 
 width:18px;
@@ -1182,7 +1183,7 @@ line-height:2;
 
 .privacy-page li{
 
-margin-bottom:12px;
+margin-bottom:12px;}
 
 .floating-download{
 
