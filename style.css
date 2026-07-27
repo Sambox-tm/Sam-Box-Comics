@@ -1184,57 +1184,42 @@ line-height:2;
 
 margin-bottom:12px;
 
-}
 .floating-download{
 
-    position:fixed !important;
+    position:fixed;
 
-    top:50% !important;
-    right:25px !important;
-    left:auto !important;
+    top:180px;
+    right:20px;
 
-    transform:translateY(-50%) !important;
+    width:60px;
+    height:60px;
 
-    width:55px;
-    height:55px;
-
-    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
     background:#111;
-
     border:2px solid #ffd000;
+    border-radius:16px;
 
     color:#ffd000;
 
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
+    font-family:Cairo;
 
     cursor:pointer;
 
-    z-index:9999999;
-
-}
-
-    font-family:Cairo;
+    z-index:999999;
 
     transition:.3s;
 
 }
 
-
 .floating-download span{
 
-    font-size:22px;
-
-    line-height:20px;
+    font-size:24px;
 
 }
-
 
 .floating-download small{
 
@@ -1242,17 +1227,12 @@ margin-bottom:12px;
 
 }
 
-
 .floating-download:hover{
-
-    transform:translateY(-3px) scale(1.08);
 
     background:#ffd000;
 
-    color:#050505;
+    color:#111;
 
-}
-.floating-download{
-    opacity:1 !important;
-    visibility:visible !important;
+    transform:scale(1.08);
+
 }
