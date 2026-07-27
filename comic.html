@@ -95,8 +95,15 @@
 <br>
 
 
-<div id="buttons"></div>
+<div class="reader-controls">
 
+<button id="issuesButton" class="issues-button">
+📚 الأعداد
+</button>
+
+<div id="issuesMenu" class="issues-menu"></div>
+
+</div>
 
 <button id="favoriteBtn" class="favorite-btn">
 
@@ -153,27 +160,31 @@ document.getElementById("cover").src = `comics/${comic}/cover.jpg`;
 
 
 let html = "";
+const issuesButton = document.getElementById("issuesButton");
+const issuesMenu = document.getElementById("issuesMenu");
 
+let menuHTML = "";
 
 for(let i=1;i<=info.issues;i++){
 
-
-html += `
-
+menuHTML += `
 <a href="reader.html?comic=${comic}&issue=${i}">
-
-<button>العدد ${i}</button>
-
+العدد ${i}
 </a>
-
 `;
-
 
 }
 
+issuesMenu.innerHTML = menuHTML;
 
-document.getElementById("buttons").innerHTML = html;
+issuesButton.onclick = () => {
 
+issuesMenu.style.display =
+issuesMenu.style.display === "block"
+? "none"
+: "block";
+
+};
 
 
 updateFavorite();
