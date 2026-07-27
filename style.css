@@ -1185,22 +1185,63 @@ line-height:2;
 margin-bottom:12px;
 
 }
-.download-btn{
+.floating-download{
 
-    padding:10px 25px;
+    position:fixed;
 
-    font-size:16px;
+    top:120px;
+    left:25px;
+
+    width:55px;
+    height:55px;
+
+    border-radius:15px;
+
+    background:#111;
+
+    border:2px solid #ffd000;
+
+    color:#ffd000;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:99999;
+
+    font-family:Cairo;
+
+    transition:.3s;
+
+}
+
+
+.floating-download span{
+
+    font-size:22px;
+
+    line-height:20px;
+
+}
+
+
+.floating-download small{
+
+    font-size:11px;
+
+}
+
+
+.floating-download:hover{
+
+    transform:translateY(-3px) scale(1.08);
 
     background:#ffd000;
 
     color:#050505;
-
-    border:none;
-
-    border-radius:12px;
-
-    cursor:pointer;
-
-    font-family:Cairo;
 
 }
