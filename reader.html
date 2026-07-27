@@ -161,6 +161,10 @@
 
 <h2 id="issueTitle" style="color:#ddd;"></h2>
 
+<button id="downloadBtn" class="download-btn">
+⬇️ تحميل العدد
+</button>
+    
 <button id="issuesButton" class="issues-button">
 📚 الأعداد
 </button>
@@ -280,6 +284,37 @@ issuesMenu.innerHTML = menuHTML;
             nextLink.href = `reader.html?comic=${encodeURIComponent(comicName)}&issue=${nextIssue}`;
             nextLink.style.display = "inline-block";
         }
+        const downloadBtn = document.getElementById("downloadBtn");
+
+downloadBtn.onclick = async () => {
+
+    const zip = new JSZip();
+
+    for(let i = 1; i <= pageCount; i++){
+
+        const response = await fetch(`${issuePath}/page-${i}.jpg`);
+
+        const blob = await response.blob();
+
+        zip.file(`page-${i}.jpg`, blob);
+
+    }
+
+
+    const file = await zip.generateAsync({
+        type:"blob"
+    });
+
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(file);
+
+    link.download = `${info.title}-العدد-${issue}.zip`;
+
+    link.click();
+
+};
     } catch (e) {
         showError("تعذر تحميل صفحات العدد.");
     }
@@ -314,5 +349,6 @@ alert("تم نسخ رابط الموقع");
 }
 
 </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </body>
 </html>
