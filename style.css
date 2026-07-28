@@ -1189,11 +1189,14 @@ margin-bottom:12px;}
 
     position:fixed;
 
-    top:180px;
-    right:20px;
+    top: 120px;
+left: 18px;
+right: auto;
 
-    width:60px;
-    height:60px;
+width: 52px;
+height: 52px;
+
+border-radius: 14px;
 
     display:flex;
     flex-direction:column;
@@ -1217,15 +1220,12 @@ margin-bottom:12px;}
 }
 
 .floating-download span{
-
-    font-size:24px;
-
+    font-size:20px;
 }
 
 .floating-download small{
-
-    font-size:11px;
-
+    font-size:10px;
+    margin-top:2px;
 }
 
 .floating-download:hover{
