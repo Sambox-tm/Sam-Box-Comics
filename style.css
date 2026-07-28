@@ -1186,15 +1186,15 @@ line-height:2;
 margin-bottom:12px;}
 
 .floating-download{
+    position: fixed;
 
-    position:fixed;
+    top: 70px;     
+    right: 15px;
 
-    top: 145px;
-left: 12px;
-right: auto;
+    transform: translateY(-50%);
 
-width: 52px;
-height: 52px;
+    width: 58px;
+    height: 58px;
 
 border-radius: 14px;
 
